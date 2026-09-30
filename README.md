@@ -2,8 +2,25 @@
 
 Metodología personal de desarrollo mediante vibecoding y agentes.
 
+## Regla de uso
+
+Este repositorio es la **fuente canónica y de solo lectura durante adopciones**. Los archivos específicos de cada proyecto deben crearse únicamente en el repositorio objetivo.
+
+Leer primero: [USAGE.md](USAGE.md).
+
 ## Versiones
 
 - [v1.0](standards/v1.0/README.md) — **aprobado para piloto** (2026-09-30)
 
-Las versiones publicadas bajo `standards/` se conservan como referencias versionadas. Los cambios futuros deben publicarse como una nueva versión o revisión explícita, sin modificar silenciosamente una versión ya consumida por otros proyectos.
+## Estructura
+
+```text
+alex-development-standard/
+├── README.md
+├── USAGE.md
+└── standards/
+    └── v1.0/
+        └── documentación canónica de ALEX DEVELOPMENT STANDARD v1.0
+```
+
+Las versiones publicadas bajo `standards/` se consideran referencias versionadas e inmutables. Los cambios futuros deben publicarse como una nueva versión explícita, por ejemplo `v1.1`, sin sobrescribir silenciosamente `v1.0`.
