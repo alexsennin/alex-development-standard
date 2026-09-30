@@ -1,68 +1,64 @@
 # Reporte de creación y cierre de ALEX DEVELOPMENT STANDARD v1.0
 
-Fecha: 2026-09-30. Estado formal: **ALEX DEVELOPMENT STANDARD v1.0 — aprobado para piloto**. Alex aprobó la estructura y solicitó este cierre con ajustes proporcionales. La revisión documental no equivale a piloto ejecutado, adopción universal ni validación en otros repositorios.
+Fecha: 2026-09-30. Estado formal: **ALEX DEVELOPMENT STANDARD v1.0 — aprobado para piloto**. Piloto aún no iniciado.
 
-## Origen y trazabilidad
+## Origen
 
-Se estudiaron los once documentos de extracción de `alexsennin/mundo-de-colores-inventario`. La primera extracción quedó en `641d49c` y su cierre en `dd7fe7f`; la metodología independiente, en `424b60f`, con registro de entrega en `7c978aa`. Este cierre se identifica por el commit final de la rama `codex/alex-standard-v1-cierre`; consultar Git para el SHA, sin introducir autorreferencias dentro del propio commit.
+La metodología se extrajo inicialmente de patrones observados en `alexsennin/mundo-de-colores-inventario`, separando principios reutilizables de stack, dominio, identidad y deuda técnica.
 
-## Lo extraído y lo descartado
+## Principios consolidados
 
-| Tratamiento | Elementos |
-| --- | --- |
-| Principios extraídos | Comprender contexto antes de editar; cambios pequeños; aceptación verificable; preservar trabajo ajeno; actual separado de objetivo; pruebas y evidencia por capa; decisiones trazables; Git/remoto distintos de Producción; contexto persistente y handoff |
-| Específicos de dominio descartados del núcleo | Ciclos/grupos escolares, Diario Escolar, prendas/tallas, folios, stock negativo temporal, alias de cuentas, reglas de acceso escolares, moneda/zona e IDs/URLs operativas |
-| Identidad/stack descartados como requisitos | Marca/logo, paleta/Nunito/medidas y navegación horizontal; Next, Apps Script, Supabase y Vercel; carpetas y comandos particulares. Pueden elegirse en un proyecto, no son obligaciones de la metodología |
-| Deuda descartada como estándar | Dashboard concentrado, duplicación de helpers, CSS acumulativo, documentación contradictoria, E2E condicionada y paginación incompleta. Son problemas del ejemplo, no convenciones para replicar |
+- comprender contexto antes de editar;
+- cambios pequeños y aceptación verificable;
+- preservar trabajo ajeno;
+- separar implementación actual, objetivo y propuesta;
+- evidencia proporcional por nivel de cambio;
+- contexto persistente en el repositorio;
+- decisiones/tareas trazables;
+- Git/remoto separados de despliegue/Producción;
+- handoff proporcional;
+- evitar sobredocumentación.
 
-La [clasificación de origen](README.md#clasificación-de-lo-aprendido-antes-de-abstraer) detalla esta separación sin copiar las reglas de producto.
+## Convención estructural añadida antes del piloto
 
-## Reglas nuevas y modificadas
-
-**Introducidas al construir la metodología:** responsabilidades documentales independientes del stack; flujo/roles conceptuales; recuperación entre chats; gestión explícita de tareas/decisiones; contratos de evidencia, cierre y adopción gradual.
-
-**Añadidas en el cierre de v1.0:** niveles 1–4 con reclasificación por riesgo; plantilla copiable de inicio; prohibición explícita de sobredocumentar; handoff mínimo/completo; vocabulario común de implementado/probado/publicado/desplegado/verificado en Producción; este reporte ejecutivo.
-
-**Modificadas:** cierre deja de implicar editar todos los documentos en cada sesión; sólo se actualiza la verdad que cambió. Condición de terminado y pruebas se ajustan al nivel. Push se registra cuando corresponde por política/alcance, manteniendo respaldo remoto del trabajo importante. Publicación en Git se diferencia de despliegue operativo. Estado formal pasa de revisión a aprobado para piloto por instrucción de Alex.
-
-No se debilitan aceptación, preservación de cambios ajenos, límites de autorización, protección de datos ni veracidad de resultados. Menos carga para cambios triviales no autoriza omitir controles pertinentes de una operación crítica.
-
-## Estructura final
+Por decisión de Alex, la documentación específica de cada proyecto consumidor se organiza por defecto así:
 
 ```text
-standards/
-├── README.md
-├── ENGINEERING_STANDARD.md
-├── AGENT_WORKFLOW.md
-├── CONTEXT_MANAGEMENT.md
-├── GIT_WORKFLOW.md
-├── PROJECT_DOCUMENTATION.md
-├── SESSION_HANDOFF.md
-├── DECISION_MANAGEMENT.md
-├── TASK_MANAGEMENT.md
-├── TESTING_STANDARD.md
-├── DEPLOYMENT_STANDARD.md
-├── DESIGN_STANDARD.md
-├── PROJECT_ADOPTION.md
-└── ADOPTION_REPORT.md
+<TARGET_ROOT>/
+├── AGENTS.md
+└── project-methodology/
+    ├── PROJECT_CONTEXT.md
+    ├── PROJECT_STATE.md
+    ├── ARCHITECTURE.md
+    ├── TODO.md
+    ├── DECISIONS.md
+    └── design/
+        ├── DESIGN_SYSTEM.md
+        ├── TOKENS.md
+        ├── COMPONENTS.md
+        └── LAYOUTS.md
 ```
 
-El [índice](README.md#entrada-y-mapa) distribuye responsabilidades; Engineering es raíz y define niveles/vocabulario. Las demás guías enlazan esas definiciones, evitando repetirlas.
+Motivo: mantener la raíz del proyecto limpia y separar claramente código/configuración de la memoria metodológica del producto.
 
-## Uso y partes adaptables
+`AGENTS.md` permanece en la raíz como puerta de entrada para agentes. `design/` se crea sólo cuando exista UI y aporte valor.
 
-**Proyecto nuevo:** definir propósito/restricciones y estado sin implementación, completar contexto útil con hechos propios, elegir stack/diseño y comandos comprobables. Usar la plantilla de inicio y ejecutar una tarea autorizada de nivel adecuado; no inventar despliegues o pruebas para llenar casillas.
+Esta convención se incorporó antes de iniciar el primer piloto, por lo que permanece dentro de v1.0. Una vez iniciado el piloto, cambios posteriores de metodología deberán versionarse explícitamente.
 
-**Proyecto existente:** inventariar y leer sus instrucciones/documentos antes de editar, mapear responsabilidades, preservar convenciones válidas y cambios ajenos, corregir brechas con alcance acotado. No copiar archivos del ejemplo ni refactorizar sólo para adoptar. [PROJECT_ADOPTION.md](PROJECT_ADOPTION.md) define el procedimiento.
+## Separación SOURCE / TARGET
 
-Adaptables: stack/proveedores, estructura de código, comandos/pruebas, nombres/ubicación documental mapeados, política de ramas/push, entorno de ensayo, identidad/estilos, dominio/datos, distribución del paquete y revisión acorde al riesgo. Se conservan principios de contexto, aceptación, evidencia, trazabilidad, seguridad pertinente y handoff proporcional.
+- SOURCE_REPO: `alexsennin/alex-development-standard`, sólo lectura durante adopciones.
+- SOURCE_VERSION: `standards/v1.0/`.
+- TARGET_REPO: repositorio del producto, único lugar de escritura de la adopción.
 
-## Validación humana y siguiente acción
+Una adopción debe detenerse si SOURCE_REPO y TARGET_REPO son iguales.
 
-Aprobación para piloto registrada por instrucción de Alex en esta fase; no falta otra aprobación de la estructura para alcanzar ese estado. Quedan por decidir proyecto/tarea piloto y autorización de su alcance, modo de distribución/versionado común, adaptaciones/excepciones locales y aceptación de resultados del piloto. Un piloto satisfactorio permitiría declarar adopción sólo del proyecto evaluado, no universal.
+## Uso
 
-Siguiente paso concreto: Alex elige un piloto acotado según PROJECT_ADOPTION, identifica nivel/aceptación y autoriza el repositorio/tarea. **Esta fase no inicia el piloto, no migra otros repositorios ni modifica funcionalidades de Mundo de Colores.**
+**Proyecto nuevo:** inicializar contexto real bajo `project-methodology/`, dejando AGENTS en raíz.
 
-## Revisión y límites de cierre
+**Proyecto existente:** inventariar documentación previa, resolver autoridad y mover/adaptar de forma segura sin duplicar ni refactorizar funcionalidad sólo para adoptar.
 
-Verificación documental: enlaces/anchors, coherencia de niveles, actualización selectiva, terminología y requisitos, alcance del diff y git diff --check. Evidencia de Git/remoto en el handoff final y PROJECT_STATE. No se ejecutan pruebas funcionales ni despliegues por esta revisión documental; Producción no se verifica. La efectividad práctica de la metodología sigue pendiente del piloto.
+## Estado
+
+v1.0 está lista para piloto. La efectividad práctica sigue pendiente de ejecutar una adopción en un proyecto consumidor y una tarea pequeña de extremo a extremo.
