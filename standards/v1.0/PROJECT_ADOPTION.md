@@ -1,42 +1,81 @@
-# Adopción de ALEX DEVELOPMENT STANDARD v1
+# Adopción de ALEX DEVELOPMENT STANDARD v1.0
 
-Procedimiento para aplicar la metodología en un repositorio existente o nuevo. La metodología v1.0 está aprobada para piloto; el piloto aún no se ha iniciado. Este documento prepara la adopción; no autoriza modificar otros repositorios ni instalar herramientas/skills.
+Procedimiento para aplicar la metodología en un repositorio existente o nuevo. La metodología v1.0 está aprobada para piloto.
+
+## Preflight obligatorio
+
+Antes de escribir:
+
+1. Confirmar SOURCE_REPO = `alexsennin/alex-development-standard`.
+2. Confirmar SOURCE_VERSION = `standards/v1.0/`.
+3. Confirmar TARGET_REPO y TARGET_ROOT.
+4. Confirmar rama, remoto, HEAD y estado Git de TARGET_REPO.
+5. Confirmar TARGET_REPO != SOURCE_REPO.
+
+Si SOURCE_REPO y TARGET_REPO son iguales, detenerse sin modificar nada.
+
+## Estructura de adopción recomendada
+
+```text
+<TARGET_ROOT>/
+├── AGENTS.md
+├── README.md
+├── <código/configuración>
+└── project-methodology/
+    ├── PROJECT_CONTEXT.md
+    ├── PROJECT_STATE.md
+    ├── ARCHITECTURE.md
+    ├── TODO.md
+    ├── DECISIONS.md
+    └── design/
+        ├── DESIGN_SYSTEM.md
+        ├── TOKENS.md
+        ├── COMPONENTS.md
+        └── LAYOUTS.md
+```
+
+`AGENTS.md` permanece en raíz y enlaza a `project-methodology/`. Los documentos de diseño se crean sólo si aplican.
 
 ## Etapas
 
-1. **Inventario:** identificar propósito, stack, estructura, estado Git, fuentes operativas, entornos y reglas existentes. Leer documentación vigente antes de crear nada.
-2. **Brechas:** clasificar hechos, propuestas, deuda y documentación obsoleta; ubicar equivalentes a los seis documentos mínimos y reglas de diseño cuando aplican.
-3. **Plan de adopción:** definir alcance, archivos, criterios de aceptación, dependencias y política de publicación del proyecto. Conservar instrucciones válidas y generadas.
-4. **Contexto mínimo:** completar los documentos con datos propios. Usar responsabilidades de PROJECT_DOCUMENTATION, no copiar contenido del ejemplo.
-5. **Adaptación técnica:** registrar comandos comprobados, pruebas, entornos y despliegue según stack; no inventar integraciones.
-6. **Piloto:** ejecutar una tarea pequeña autorizada de extremo a extremo, clasificada por nivel de cambio, con revisión y handoff proporcional.
-7. **Revisión:** comprobar que otro agente puede recuperar contexto, verificar resultado y continuar; corregir fricciones sin imponer refactor innecesario.
-8. **Declaración:** registrar versión adoptada, excepciones y fecha/responsable. Sólo entonces considerar adoptado el estándar.
+1. **Inventario:** identificar propósito, stack, estructura, estado Git, fuentes operativas, entornos y reglas existentes.
+2. **Brechas:** clasificar hechos, propuestas, deuda y documentación obsoleta; ubicar equivalentes a las responsabilidades mínimas.
+3. **Plan de adopción:** definir alcance, archivos, criterios de aceptación, dependencias y política de publicación.
+4. **Contexto mínimo:** crear/adaptar `AGENTS.md` y `project-methodology/` con datos propios; no copiar contenido del estándar.
+5. **Adaptación técnica:** registrar comandos comprobados, pruebas, entornos y despliegue según stack.
+6. **Piloto:** ejecutar una tarea pequeña autorizada de extremo a extremo con nivel de cambio y handoff proporcional.
+7. **Revisión:** comprobar que otro agente puede recuperar contexto y continuar.
+8. **Declaración:** registrar versión adoptada, excepciones y fecha/responsable.
 
-## Separación de capas
+## Proyecto existente con documentos dispersos
 
-Núcleo universal: principios, contexto, tareas, decisiones, pruebas, Git, autorización/publicación y handoff proporcional. Adaptación tecnológica: runtime/framework, comandos, contratos, migraciones y herramientas concretas. Adaptación de producto: usuarios, dominio, datos, idiomas/moneda/zona, identidad y comportamiento.
+Si ya existen PROJECT_CONTEXT, PROJECT_STATE, ARCHITECTURE, TODO, DECISIONS o documentos visuales en la raíz u otra carpeta:
 
-Una adaptación para web, automatización de hojas o servicios de datos puede elegir herramientas distintas. Ninguna requiere Next, Apps Script, Supabase, Vercel ni un layout específico para cumplir el núcleo. Cuando no exista ejecución local completa, documentar sandbox autorizado y evidencia real.
+- inventariarlos primero;
+- identificar cuál contiene la verdad vigente;
+- moverlos a `project-methodology/` sólo si el movimiento es seguro y no rompe automatizaciones/enlaces;
+- actualizar enlaces desde AGENTS/README cuando corresponda;
+- no duplicar versiones que compitan como autoridad;
+- preservar historial mediante Git.
+
+La organización es una convención, no autorización para un refactor funcional.
 
 ## Preservación e independencia
 
-Integrar con AGENTS/instrucciones existentes sin eliminarlas. Si el proyecto utiliza otra ubicación documental, mapear explícitamente cada responsabilidad y ofrecer los seis puntos de entrada para recuperación; no duplicar archivos que competirán como autoridad.
-
-Elegir cómo distribuir/versionar el paquete (copia versionada, enlace, repo común u otro mecanismo) mediante decisión posterior. Registrar versión de origen para evitar actualizaciones silenciosas. No sincronizar automáticamente todos los consumidores ni trasladar IDs, URLs operativas, cuentas, datos o marca del proyecto de referencia.
+No copiar los documentos normativos del SOURCE_REPO dentro de TARGET_REPO. El proyecto consumidor registra únicamente su contexto, estado, arquitectura, tareas, decisiones y diseño propios.
 
 ## Aceptación de adopción
 
-- Los seis documentos describen hechos propios y tienen responsabilidades claras.
+- SOURCE_REPO quedó sin modificaciones.
+- TARGET_REPO contiene una única autoridad documental clara.
+- AGENTS.md referencia la metodología y dirige a `project-methodology/`.
 - STATE refleja presente, TODO criterios verificables y DECISIONS razones duraderas.
 - Actual/objetivo y probado/publicado están separados.
-- Herramientas/comandos/destinos se comprobaron; secretos y datos privados quedaron fuera.
-- Una tarea piloto cumple aceptación y cierre, incluyendo estado Git/remoto/Producción explícitos.
-- Otro agente puede determinar siguiente paso sin leer el chat.
-- Excepciones y deuda no se presentan como cumplimiento total.
+- Herramientas/comandos/destinos comprobados; secretos fuera.
+- Otro agente puede determinar el siguiente paso sin leer el chat.
 
-Para un proyecto nuevo sin funcionalidades, documentar “sin implementación” y verificar lo que existe; no inventar pruebas ni un despliegue para llenar el checklist.
+Para un proyecto nuevo sin funcionalidades, documentar “sin implementación”; no inventar pruebas o despliegues.
 
 ## Siguiente paso para el piloto
 
-Alex debe elegir el proyecto/tarea piloto y autorizar su alcance. La aprobación para piloto no autoriza todavía migrar otros repositorios. La creación de una base central o skill es una tarea posterior con su alcance propio; esta entrega no migra proyectos ni cambia funcionalidades.
+Elegir una tarea pequeña y de bajo riesgo en TARGET_REPO. La adopción documental no autoriza modificar SOURCE_REPO ni desplegar Producción.
