@@ -10,7 +10,7 @@ Leer primero: [USAGE.md](USAGE.md).
 
 ## Versiones
 
-- [v1.0](standards/v1.0/README.md) — **aprobado para piloto** (2026-09-30)
+- [v1.1](standards/v1.1/README.md) — **vigente / recomendado** (2026-10-03)\n- [v1.0](standards/v1.0/README.md) — versión histórica (2026-09-30)
 
 ## Estructura
 
