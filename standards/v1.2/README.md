@@ -21,6 +21,7 @@ Comenzar por [ENGINEERING_STANDARD.md](ENGINEERING_STANDARD.md), documento raíz
 | [TASK_MANAGEMENT](TASK_MANAGEMENT.md) | Tareas concretas, estados y aceptación |
 | [TESTING_STANDARD](TESTING_STANDARD.md) | Verificación proporcional y límites de evidencia |
 | [DEPLOYMENT_STANDARD](DEPLOYMENT_STANDARD.md) | Destinos, publicación, recuperación y comprobación |
+| [MIGRATION_STANDARD](MIGRATION_STANDARD.md) | Historial, efectos y compatibilidad cuando cambian datos o contratos persistentes |
 | [PROMPTING_GUIDE](PROMPTING_GUIDE.md) | Cómo pedir correcciones, funciones y publicaciones con alcance claro |
 | [DESIGN_STANDARD](DESIGN_STANDARD.md) | Consistencia visual sin imponer identidad |
 | [PROJECT_ADOPTION](PROJECT_ADOPTION.md) | Adopción gradual y adaptación a cada repositorio |
@@ -69,4 +70,4 @@ La [clasificación por nivel](ENGINEERING_STANDARD.md#niveles-de-cambio) ajusta 
 
 ## Propuesta principal de v1.2
 
-v1.2 conserva los modos de v1.1 y divide RELEASE en una ruta rápida para archivos de aplicación reversibles y una ruta ampliada para datos, contratos o varios destinos. No exige una versión numerada manual por cada actualización sencilla. La nueva [guía de pedidos](PROMPTING_GUIDE.md) ayuda a especificar resultado, destino y límites sin convertir al usuario en operador de herramientas.
+v1.2 conserva los modos de v1.1 y divide RELEASE en una ruta rápida para archivos de aplicación reversibles y una ruta ampliada para datos, contratos o varios destinos. No exige una versión numerada manual por cada actualización sencilla. La ruta ampliada incorpora las reglas de migraciones y compatibilidad por capas ya documentadas en MonduColores. La nueva [guía de pedidos](PROMPTING_GUIDE.md) ayuda a especificar resultado, destino y límites sin convertir al usuario en operador de herramientas.

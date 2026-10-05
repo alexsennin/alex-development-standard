@@ -22,7 +22,7 @@ Reclasificar cuando la sesión descubre mayor riesgo. [Terminado](ENGINEERING_ST
 | Datos/autorización | Acceso permitido y denegado, alcance, restricciones, migración y compatibilidad |
 | Operación crítica | Atomicidad/compensación, duplicación/concurrencia y conservación de historial cuando necesario |
 | UI | Recorrido afectado, estados, responsive y accesibilidad de controles pertinentes |
-| Publicación | Destino/versión y smoke de recorrido real definido en DEPLOYMENT_STANDARD |
+| Publicación | Destino/revisión disponible y comprobación del recorrido real afectado definida en DEPLOYMENT_STANDARD |
 
 Lint/typecheck/build comprueban aspectos estáticos; no demuestran autorizaciones, bridge, DB, archivos ni experiencia completa. Un health endpoint puede demostrar disponibilidad de proceso, no conexión de todos sus servicios.
 

@@ -19,6 +19,8 @@ Subir o reemplazar archivos es un mecanismo válido para la ruta rápida cuando 
 
 La ausencia de migración **no basta** para elegir la ruta rápida: un cambio de código puede modificar ventas, permisos o cálculos sobre datos reales sin cambiar la estructura de la base. Ante ese efecto, usar la ruta ampliada sólo para las capas implicadas.
 
+Ejemplos: corregir un texto, ajustar una tabla visual o reparar un filtro de lectura que usa el mismo contrato puede ir por la ruta rápida. Cambiar el cálculo del total de una venta, la autorización para editarla o la semántica de una escritura va por la ruta ampliada aunque no exista SQL nuevo. Agregar una columna o publicar una función independiente también va por la ruta ampliada.
+
 ## Ruta rápida paso a paso
 
 1. Confirmar que los cambios incluidos cumplen la condición de sólo archivos y que la persona usuaria ya autorizó ese destino. Una orden como «aplica en Producción» autoriza esta entrega; no volver a pedir permiso para la misma operación.
@@ -31,7 +33,7 @@ No repetir búsquedas de versiones de DB, funciones o proyectos ajenos cuando ni
 
 ## Ruta ampliada
 
-Aplicar las secciones siguientes de forma proporcional y sólo a las capas afectadas. Una migración requiere cotejar el historial y efecto pertinentes; un cambio de función independiente requiere identificar su despliegue y compatibilidad; una carga de datos exige límites, identidad de filas, integridad y recuperación. No convertir cada RELEASE en una conciliación total de todos los entornos.
+Aplicar las secciones siguientes de forma proporcional y sólo a las capas afectadas. Una migración sigue el [protocolo de migraciones](MIGRATION_STANDARD.md); un cambio de función independiente requiere identificar su despliegue y compatibilidad; una carga de datos exige límites, identidad de filas, integridad y recuperación. No convertir cada RELEASE en una conciliación total de todos los entornos.
 
 ## Antes de desplegar
 
@@ -46,7 +48,7 @@ Local-first es una opción frecuente; si el stack depende de un servicio remoto,
 
 ## Ejecución
 
-Desplegar sólo el artefacto y cambios acordados al destino identificado. Conservar el identificador disponible del despliegue/script/configuración. Separar migraciones/datos cuando requieren orden y compatibilidad. No aplicar cambios de esquema o permisos remotos incidentalmente durante una entrega documental.
+Desplegar sólo el artefacto y cambios acordados al destino identificado. Conservar el identificador disponible del despliegue/script/configuración. Separar migraciones/datos cuando requieren orden y compatibilidad; seguir una [secuencia compatible por capas](MIGRATION_STANDARD.md#cambios-por-capas) cuando la entrega cruce base, servicios y aplicación. No aplicar cambios de esquema o permisos remotos incidentalmente durante una entrega documental.
 
 Una recuperación puede exigir rollback de código, migración compensatoria o restore; no prometer reversión automática de datos. Registrar fallo y evitar reintentos ciegos que dupliquen operaciones.
 
@@ -68,4 +70,4 @@ Código remoto y backup de DB/archivos son evidencias distintas. “Respaldado�
 
 ## Migraciones y ciclo de iteración
 
-Crear o probar una migración en entorno local/aislado forma parte del desarrollo. Aplicarla a Producción es una operación RELEASE. Mantener migraciones reproducibles y ordenadas, pero no consultar ni sincronizar el historial remoto en cada PATCH que no afecte datos. En CHECK se identifica qué migraciones forman parte del candidato; en RELEASE se compara/aplica/verifica el estado necesario.
+Crear o probar una migración en entorno local/aislado forma parte del desarrollo. Aplicarla a Producción es una operación RELEASE. Mantener migraciones reproducibles y ordenadas, pero no consultar ni sincronizar el historial remoto en un PATCH o CHECK que no afecte datos. Si la entrega incluye migraciones, CHECK identifica las candidatas y RELEASE aplica el [protocolo pertinente](MIGRATION_STANDARD.md).

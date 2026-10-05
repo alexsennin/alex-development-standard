@@ -47,7 +47,7 @@ CHECK significa “esta ronda está lista para revisión”.
 2. Detectar regresiones, cambios accidentales y secretos.
 3. Ejecutar pruebas acumuladas pertinentes; no repetir pruebas que sigan siendo válidas sin razón.
 4. Actualizar documentación cuya verdad cambió.
-5. Identificar migraciones/configuración pendientes.
+5. Identificar migraciones/configuración pendientes sólo si el cambio o una dependencia conocida las incluye.
 6. Crear commit(s) y push cuando la política/alcance lo indiquen.
 7. Actualizar RELEASE_STATE cuando exista y haya cambiado.
 8. Entregar estado: listo para RELEASE, bloqueado o requiere nueva iteración.

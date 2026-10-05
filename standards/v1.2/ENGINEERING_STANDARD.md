@@ -87,4 +87,4 @@ Son hechos independientes, no una etiqueta única de progreso. Una publicación 
 
 ## Documentos que desarrollan estas reglas
 
-[Flujo de agentes](AGENT_WORKFLOW.md), [contexto](CONTEXT_MANAGEMENT.md), [Git](GIT_WORKFLOW.md), [documentación](PROJECT_DOCUMENTATION.md), [handoff](SESSION_HANDOFF.md), [decisiones](DECISION_MANAGEMENT.md), [tareas](TASK_MANAGEMENT.md), [pruebas](TESTING_STANDARD.md), [despliegue](DEPLOYMENT_STANDARD.md), [diseño](DESIGN_STANDARD.md) y [adopción](PROJECT_ADOPTION.md).
+[Flujo de agentes](AGENT_WORKFLOW.md), [contexto](CONTEXT_MANAGEMENT.md), [Git](GIT_WORKFLOW.md), [documentación](PROJECT_DOCUMENTATION.md), [handoff](SESSION_HANDOFF.md), [decisiones](DECISION_MANAGEMENT.md), [tareas](TASK_MANAGEMENT.md), [pruebas](TESTING_STANDARD.md), [despliegue](DEPLOYMENT_STANDARD.md), [migraciones](MIGRATION_STANDARD.md), [diseño](DESIGN_STANDARD.md), [pedidos](PROMPTING_GUIDE.md) y [adopción](PROJECT_ADOPTION.md).

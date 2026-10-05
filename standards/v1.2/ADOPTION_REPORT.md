@@ -16,4 +16,4 @@ Las correcciones iterativas ya tenían una ruta ligera en v1.1, pero el protocol
 
 ## Compatibilidad y límites
 
-La copia v1.2 conserva el resto de v1.1 para que la propuesta sea revisable como paquete completo. No altera v1.0 ni v1.1. La v1.2 escrita dentro de MonduColores es una adaptación local distinta, centrada en migraciones y publicación por capas; deberá reconciliarse explícitamente si este paquete central se aprueba. Esta propuesta no cambia ningún producto ni ejecuta despliegues.
+La copia v1.2 conserva el resto de v1.1 para que la propuesta sea revisable como paquete completo. No altera v1.0 ni v1.1. Se integraron al protocolo central las reglas generales de migraciones y publicación por capas de la v1.2 escrita dentro de MonduColores; sus comandos y límites propios permanecen en ese proyecto. Aprobar el estándar central no modifica ni declara adoptado automáticamente a MonduColores u otros productos. Esta propuesta no cambia ningún producto ni ejecuta despliegues.
