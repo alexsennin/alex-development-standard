@@ -2,6 +2,8 @@
 
 Procedimiento para aplicar la metodología en un repositorio existente o nuevo. La v1.2 es una propuesta pendiente de revisión; v1.1 sigue recomendada hasta su aprobación. No aplicar v1.2 automáticamente a proyectos consumidores.
 
+El [agente de conciliación semanal](WEEKLY_RECONCILIATION_AGENT.md) es opcional: sólo se programa para proyectos y destinos elegidos expresamente, después de identificar sus fuentes de evidencia. La adopción documental del estándar no crea una automatización por sí misma.
+
 ## Preflight obligatorio
 
 Antes de escribir:

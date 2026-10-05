@@ -13,7 +13,7 @@ Durante una adopción, un agente puede leer `standards/v1.1/`, pero no debe edit
 
 ALEX DEVELOPMENT STANDARD v1.1 es la versión vigente recomendada. Introduce modos de iteración PATCH/FEATURE/SYSTEM/CHECK/RELEASE y economía de contexto. v1.0 permanece como referencia histórica inmutable.
 
-La [propuesta v1.2](standards/v1.2/README.md) añade una ruta rápida de publicación para cambios sólo de archivos, una ruta ampliada con [protocolo de migraciones](standards/v1.2/MIGRATION_STANDARD.md) y una [guía de pedidos](standards/v1.2/PROMPTING_GUIDE.md). Aún no reemplaza v1.1 ni se adopta automáticamente en productos.
+La [propuesta v1.2](standards/v1.2/README.md) añade una ruta rápida de publicación para cambios sólo de archivos, una ruta ampliada con [protocolo de migraciones](standards/v1.2/MIGRATION_STANDARD.md), una [guía de pedidos](standards/v1.2/PROMPTING_GUIDE.md) y un [agente semanal opcional](standards/v1.2/WEEKLY_RECONCILIATION_AGENT.md). Aún no reemplaza v1.1 ni se adopta automáticamente en productos.
 
 ## Antes de adoptar en un proyecto
 

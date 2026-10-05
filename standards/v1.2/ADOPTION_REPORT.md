@@ -12,6 +12,7 @@ Las correcciones iterativas ya tenían una ruta ligera en v1.1, pero el protocol
 - Ruta ampliada únicamente para las capas implicadas en datos, contratos, permisos, configuración o servicios independientes.
 - Sin números manuales de versión, etiquetas, changelog, `RELEASE_STATE.md`, respaldo de DB ni revisión de historial de migraciones en la ruta rápida.
 - Guía breve para pedir correcciones locales, consolidar rondas y autorizar una publicación con alcance claro.
+- Agente opcional de conciliación semanal en solo lectura, con línea base y avisos únicamente ante diferencias relevantes.
 - Cierre documental sólo cuando cambió la verdad de un documento.
 
 ## Compatibilidad y límites

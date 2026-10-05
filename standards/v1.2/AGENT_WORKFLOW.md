@@ -12,6 +12,8 @@ CHECK   → diff acumulado → pruebas pertinentes → documentación necesaria 
 RELEASE → preflight → autorización → publicación/migraciones → verificación → registro
 ```
 
+La [conciliación semanal](WEEKLY_RECONCILIATION_AGENT.md) es un agente opcional de solo lectura, fuera del ciclo de implementación. No se invoca para cada PATCH/CHECK y no sustituye el preflight de RELEASE.
+
 PATCH y FEATURE no deben ejecutar por rutina Commit → Push → Handoff completo después de cada microiteración. Esas operaciones pueden consolidarse en CHECK cuando el usuario está realizando una ronda interactiva de pruebas.
 
 ## Etapas y resultados
