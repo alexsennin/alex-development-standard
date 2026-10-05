@@ -1,12 +1,12 @@
-# Informe de propuesta v1.2
+# Informe de aprobación v1.2
 
-Fecha: 2026-10-05. Estado: **propuesta para revisión**, sin adopción automática en proyectos consumidores. La v1.1 del repositorio central permanece recomendada.
+Fecha: 2026-10-05. Estado: **vigente y recomendada para adopción gradual**, por decisión de Alex. No se adopta automáticamente en proyectos consumidores; v1.1 permanece como referencia histórica.
 
 ## Motivo
 
 Las correcciones iterativas ya tenían una ruta ligera en v1.1, pero el protocolo de RELEASE seguía describiendo un preflight general. En los proyectos revisados, esto mezcló publicaciones de sólo código con conciliación de migraciones y versiones de funciones. También hubo solicitudes donde el trabajo de validación desplazó la prioridad de tener un MVP local usable.
 
-## Cambios propuestos
+## Cambios incorporados
 
 - Ruta rápida de Producción para cambios reversibles sólo de archivos de aplicación, con revisión del diff, prueba pertinente, destino conocido, identificador automático y comprobación del flujo afectado.
 - Ruta ampliada únicamente para las capas implicadas en datos, contratos, permisos, configuración o servicios independientes.
@@ -17,4 +17,4 @@ Las correcciones iterativas ya tenían una ruta ligera en v1.1, pero el protocol
 
 ## Compatibilidad y límites
 
-La copia v1.2 conserva el resto de v1.1 para que la propuesta sea revisable como paquete completo. No altera v1.0 ni v1.1. Se integraron al protocolo central las reglas generales de migraciones y publicación por capas de la v1.2 escrita dentro de MonduColores; sus comandos y límites propios permanecen en ese proyecto. Aprobar el estándar central no modifica ni declara adoptado automáticamente a MonduColores u otros productos. Esta propuesta no cambia ningún producto ni ejecuta despliegues.
+La v1.2 conserva el resto de v1.1 como paquete completo. No altera v1.0 ni v1.1. Se integraron al protocolo central las reglas generales de migraciones y publicación por capas de la v1.2 escrita dentro de MonduColores; sus comandos y límites propios permanecen en ese proyecto. La aprobación central no modifica ni declara adoptado automáticamente a MonduColores u otros productos, y no ejecuta despliegues de aplicaciones.

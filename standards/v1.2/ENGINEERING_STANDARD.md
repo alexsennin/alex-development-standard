@@ -1,6 +1,6 @@
 # ALEX DEVELOPMENT STANDARD v1.2 — Engineering Standard
 
-Documento raíz. Estado: **propuesta v1.2 para revisión**, 2026-10-05. La v1.1 sigue siendo la versión central recomendada hasta que se apruebe esta propuesta. Piloto no iniciado; no adoptado universalmente. Independiente de lenguaje, framework, proveedor, dominio e identidad visual.
+Documento raíz. Estado: **ALEX DEVELOPMENT STANDARD v1.2 — vigente y recomendado para adopción gradual**, 2026-10-05, por decisión de Alex. Cada repositorio decide su adopción y sus adaptaciones; no se declara implantación universal ni piloto transversal completado. Independiente de lenguaje, framework, proveedor, dominio e identidad visual.
 
 ## Principios obligatorios
 

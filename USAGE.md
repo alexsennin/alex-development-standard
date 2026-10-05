@@ -7,20 +7,20 @@ Este repositorio es la **fuente canónica de la metodología**. No es un proyect
 - `alexsennin/alex-development-standard` = **SOURCE_REPO / solo lectura durante adopciones**.
 - El repositorio donde se desarrolla un producto = **TARGET_REPO / único lugar donde se crean o modifican archivos del proyecto**.
 
-Durante una adopción, un agente puede leer `standards/v1.1/`, pero no debe editar, copiar encima ni adaptar esos archivos dentro de este repositorio.
+Durante una adopción, un agente lee `standards/v1.2/`, pero no debe editar, copiar encima ni adaptar esos archivos dentro de este repositorio.
 
-## Estado de v1.1
+## Estado de v1.2
 
-ALEX DEVELOPMENT STANDARD v1.1 es la versión vigente recomendada. Introduce modos de iteración PATCH/FEATURE/SYSTEM/CHECK/RELEASE y economía de contexto. v1.0 permanece como referencia histórica inmutable.
+ALEX DEVELOPMENT STANDARD v1.2 es la versión vigente y recomendada para adopción gradual por proyecto. Conserva los modos PATCH/FEATURE/SYSTEM/CHECK/RELEASE de v1.1 y su economía de contexto. v1.0 y v1.1 permanecen como referencias históricas.
 
-La [propuesta v1.2](standards/v1.2/README.md) añade una ruta rápida de publicación para cambios sólo de archivos, una ruta ampliada con [protocolo de migraciones](standards/v1.2/MIGRATION_STANDARD.md), una [guía de pedidos](standards/v1.2/PROMPTING_GUIDE.md) y un [agente semanal opcional](standards/v1.2/WEEKLY_RECONCILIATION_AGENT.md). Aún no reemplaza v1.1 ni se adopta automáticamente en productos.
+La [v1.2](standards/v1.2/README.md) añade una ruta rápida de publicación para cambios sólo de archivos, una ruta ampliada con [protocolo de migraciones](standards/v1.2/MIGRATION_STANDARD.md), una [guía de pedidos](standards/v1.2/PROMPTING_GUIDE.md) y un [agente semanal opcional](standards/v1.2/WEEKLY_RECONCILIATION_AGENT.md). Su publicación central no equivale a adoptarla automáticamente en un producto.
 
 ## Antes de adoptar en un proyecto
 
 El agente debe comprobar y declarar:
 
 1. SOURCE_REPO: `alexsennin/alex-development-standard`
-2. SOURCE_VERSION: `standards/v1.1/`
+2. SOURCE_VERSION: `standards/v1.2/`
 3. TARGET_REPO: repositorio del producto
 4. TARGET_ROOT: raíz del repositorio del producto
 5. TARGET_METHODOLOGY_DIR: `<TARGET_ROOT>/project-methodology`
@@ -58,7 +58,7 @@ La carpeta `project-methodology/` contiene la memoria persistente y la aplicaci�
 
 ## Qué nunca debe ocurrir durante una adopción
 
-- editar `standards/v1.1/` desde una sesión de adopción;
+- editar `standards/v1.2/` desde una sesión de adopción;
 - transformar este repositorio en documentación de un producto;
 - crear archivos de contexto del producto dentro de SOURCE_REPO;
 - copiar los documentos normativos del estándar dentro del proyecto consumidor;
@@ -68,6 +68,6 @@ La carpeta `project-methodology/` contiene la memoria persistente y la aplicaci�
 La adopción termina únicamente con cambios en TARGET_REPO.
 
 
-## Uso cotidiano tras adoptar v1.1
+## Uso cotidiano tras adoptar v1.2
 
 Durante pruebas iterativas, el usuario puede pedir correcciones normalmente; el agente infiere PATCH/FEATURE/SYSTEM. También puede declarar el modo explícitamente. Usar CHECK al terminar una ronda de correcciones y RELEASE sólo cuando se quiera publicar/desplegar. No ejecutar el protocolo completo de Producción durante PATCH o FEATURE.

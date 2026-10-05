@@ -1,6 +1,6 @@
 # ALEX DEVELOPMENT STANDARD v1.2
 
-Metodología personal de desarrollo mediante vibecoding y agentes. Propuesta v1.2, 2026-10-05, **pendiente de revisión**. La v1.1 sigue recomendada hasta aprobar esta propuesta. Piloto no iniciado; no adoptado universalmente.
+Metodología personal de desarrollo mediante vibecoding y agentes. Versión 1.2, 2026-10-05, **vigente y recomendada para adopción gradual**. Su publicación no implica que los proyectos consumidores ya la hayan adoptado.
 
 Este paquete es la fuente normativa de la metodología. No obliga a usar un stack, arquitectura, marca o dominio concretos. Describe cómo comprender, cambiar, verificar, registrar y entregar un proyecto.
 
@@ -69,6 +69,6 @@ La adopción debe indicar la versión de la metodología y adaptaciones locales.
 La [clasificación por nivel](ENGINEERING_STANDARD.md#niveles-de-cambio) ajusta la carga del proceso. [Actualizar sólo la verdad que cambió](PROJECT_DOCUMENTATION.md#regla-contra-la-sobredocumentación) evita burocracia.
 
 
-## Propuesta principal de v1.2
+## Cambios principales de v1.2
 
 v1.2 conserva los modos de v1.1 y divide RELEASE en una ruta rápida para archivos de aplicación reversibles y una ruta ampliada para datos, contratos o varios destinos. No exige una versión numerada manual por cada actualización sencilla. La ruta ampliada incorpora las reglas de migraciones y compatibilidad por capas ya documentadas en MonduColores. La nueva [guía de pedidos](PROMPTING_GUIDE.md) ayuda a especificar resultado, destino y límites sin convertir al usuario en operador de herramientas. Un [agente semanal opcional](WEEKLY_RECONCILIATION_AGENT.md) detecta diferencias en los proyectos que opten por usarlo, sin añadir trabajo a cada PATCH o RELEASE.

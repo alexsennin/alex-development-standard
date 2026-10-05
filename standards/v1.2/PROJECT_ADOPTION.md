@@ -1,6 +1,6 @@
 # Adopción de ALEX DEVELOPMENT STANDARD v1.2
 
-Procedimiento para aplicar la metodología en un repositorio existente o nuevo. La v1.2 es una propuesta pendiente de revisión; v1.1 sigue recomendada hasta su aprobación. No aplicar v1.2 automáticamente a proyectos consumidores.
+Procedimiento para aplicar la metodología en un repositorio existente o nuevo. La v1.2 está vigente y disponible para adopción gradual. Cada proyecto debe contrastar su estado real y decidir qué adaptar; publicar el estándar central no cambia automáticamente repositorios consumidores.
 
 El [agente de conciliación semanal](WEEKLY_RECONCILIATION_AGENT.md) es opcional: sólo se programa para proyectos y destinos elegidos expresamente, después de identificar sus fuentes de evidencia. La adopción documental del estándar no crea una automatización por sí misma.
 
