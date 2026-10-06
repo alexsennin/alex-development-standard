@@ -1,6 +1,6 @@
 # Documentación de cada proyecto
 
-Este contrato se aplica al adoptar v1.3.1. Los documentos se redactan con hechos del proyecto consumidor; no son copias del estándar central.
+Este contrato se aplica al adoptar v1.3.2. Los documentos se redactan con hechos del proyecto consumidor; no son copias del estándar central.
 
 ## Ubicación recomendada
 

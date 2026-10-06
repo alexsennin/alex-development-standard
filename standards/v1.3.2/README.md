@@ -1,6 +1,6 @@
-# ALEX DEVELOPMENT STANDARD v1.3.2
+# ARC DEVELOPMENT STANDARD v1.3.2
 
-Versión 1.3.2, 2026-10-06. Estado: **vigente y de adopción obligatoria para todo trabajo nuevo o activo bajo ALEX Development Standard**.
+Versión 1.3.2, 2026-10-06. Estado: **vigente y de adopción obligatoria para todo trabajo nuevo o activo bajo ARC Development Standard**.
 
 v1.3.2 formaliza **AXIOM — Development Orchestration Runtime** como runtime oficial de referencia para routing automático sobre Codex CLI. v1.3.1 queda histórica.
 
@@ -16,4 +16,4 @@ v1.3.2 formaliza **AXIOM — Development Orchestration Runtime** como runtime of
 
 Perfil operativo vigente: [MODEL_PROFILE](../../profiles/MODEL_PROFILE.md).
 
-Los proyectos nuevos adoptan v1.3.2 desde el inicio. Los proyectos activos bajo ALEX Development Standard deben adoptarla antes de su siguiente cambio sustantivo.
+Los proyectos nuevos adoptan v1.3.2 desde el inicio. Los proyectos activos bajo ARC Development Standard deben adoptarla antes de su siguiente cambio sustantivo.

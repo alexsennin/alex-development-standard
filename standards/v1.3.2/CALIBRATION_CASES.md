@@ -1,4 +1,4 @@
-# Casos iniciales de calibración v1.3.1
+# Casos iniciales de calibración v1.3.2
 
 Estos casos son ejemplos de referencia, no una cuarta taxonomía. Se ampliarán con evidencia de proyectos reales.
 

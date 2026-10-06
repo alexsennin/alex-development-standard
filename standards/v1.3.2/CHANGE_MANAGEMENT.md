@@ -1,6 +1,6 @@
 # Gestión de cambios e iteración
 
-ALEX DEVELOPMENT STANDARD v1.3.1 separa tres dimensiones:
+ARC DEVELOPMENT STANDARD v1.3.2 separa tres dimensiones:
 
 - **Nivel (1–4):** mide riesgo, impacto, reversibilidad y destino.
 - **Modo:** determina cuánto proceso y contexto cargar en este momento.
