@@ -1,21 +1,23 @@
 # Uso de ALEX Development Standard
 
-Este repositorio es la **fuente canónica de la metodología** y no es un proyecto consumidor.
+ALEX DEVELOPMENT STANDARD **v1.3.2** es la versión vigente y de adopción obligatoria para trabajo nuevo o activo.
 
-## Versión obligatoria
-ALEX DEVELOPMENT STANDARD **v1.3.1** es la versión vigente y de adopción obligatoria para todo trabajo nuevo o activo realizado bajo esta metodología. Las versiones anteriores son históricas.
+## Runtime recomendado
+**AXIOM + Codex CLI** es la ruta oficial para aplicar capability routing automáticamente. AXIOM se ejecuta desde el directorio del proyecto y coordina modelos sin que el usuario opere el selector.
 
-Los repositorios no se modifican automáticamente. Antes del siguiente cambio sustantivo de un proyecto activo, el agente debe adoptar explícitamente `standards/v1.3.1/` en TARGET_REPO conforme a PROJECT_ADOPTION.
+Codex CLI debe iniciar sesión con la cuenta de ChatGPT para el perfil económico predeterminado. En ese modo, el consumo utiliza la cuota de Codex del plan; no se configura una API key por defecto.
 
-## Entrada rápida
-1. SOURCE_REPO = `alexsennin/alex-development-standard`.
-2. SOURCE_VERSION = `standards/v1.3.1/`.
-3. Leer `standards/v1.3.1/CORE.md`.
-4. Confirmar TARGET_REPO/TARGET_ROOT/rama/estado Git.
-5. Leer `AGENTS.md` del proyecto y sólo los documentos adicionales indicados por la matriz de CORE.
+## Compatibilidad
+Codex Desktop sigue siendo válido, pero el routing es manual. Iniciar con FOCUSED/Luna Alto; no usar Luna Bajo como modelo inicial esperando cambios automáticos.
 
-## Proyectos reales iniciales
-El Standard se utilizará directamente en trabajo real. Primeros proyectos activos declarados: **Mundo de Colores, Docencia y Fema**. No existe una fase piloto separada.
+## Adopción
+1. SOURCE_VERSION = `standards/v1.3.2/`.
+2. Leer `CORE.md` y `AXIOM_RUNTIME.md`.
+3. Confirmar TARGET_REPO/TARGET_ROOT/rama/estado Git.
+4. Leer `AGENTS.md` del proyecto.
+5. Adoptar v1.3.2 antes del siguiente cambio sustantivo.
+
+Proyectos reales iniciales: **Mundo de Colores, Docencia y Fema**.
 
 ## Producción
-Publicar/push no autoriza Producción. Sólo instrucciones explícitas como «despliega en Producción» o «aplica en Producción» habilitan RELEASE para ese entorno y alcance.
+AXIOM no autoriza Producción por `publica`, `push` o `sube`. Sólo una instrucción explícita de desplegar/aplicar en Producción habilita RELEASE.
