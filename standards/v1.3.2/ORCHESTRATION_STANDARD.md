@@ -1,6 +1,6 @@
 # Orquestación de capacidad e inteligencia
 
-ALEX DEVELOPMENT STANDARD v1.3.2 añade una tercera dimensión operativa sin sustituir modos ni niveles:
+ARC DEVELOPMENT STANDARD v1.3.2 añade una tercera dimensión operativa sin sustituir modos ni niveles:
 
 - **Modo** (`PATCH/FEATURE/SYSTEM/CHECK/RELEASE`): qué proceso seguir y cuánto contexto cargar.
 - **Nivel** (`1–4`): riesgo, impacto, reversibilidad, destino y controles.

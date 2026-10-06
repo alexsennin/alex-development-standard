@@ -1,10 +1,10 @@
 # AXIOM — Development Orchestration Runtime
 
-AXIOM es el runtime oficial de referencia para ejecutar ALEX Development Standard con routing automático de capacidad. **AXIOM no es un modelo**: coordina Codex CLI y decide qué modelo/reasoning usar en cada actividad.
+AXIOM es el runtime oficial de referencia para ejecutar ARC Development Standard con routing automático de capacidad. **AXIOM no es un modelo**: coordina Codex CLI y decide qué modelo/reasoning usar en cada actividad.
 
 ## Relación de componentes
 ```text
-ALEX Development Standard  → define reglas
+ARC Development Standard  → define reglas
 AXIOM                      → aplica/orquesta reglas
 Codex CLI                  → ejecuta trabajo sobre el repositorio
 Modelos                    → aportan capacidad ROUTER/FOCUSED/ADVANCED/EXPERT/FRONTIER

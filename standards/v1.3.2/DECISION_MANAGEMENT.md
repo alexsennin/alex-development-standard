@@ -32,7 +32,7 @@ Si cambia una decisión, conservar su contexto y marcarla sustituida con enlace 
 
 ## Adaptación del estándar
 
-Una excepción a la versión adoptada del ALEX Development Standard identifica regla, motivo, responsable, alcance, riesgo, duración o condición de revisión y alternativa compensatoria. No permite ignorar restricciones de seguridad/autorización aplicables. La propuesta de adoptar o cambiar una metodología no se presenta como aprobación humana ya recibida.
+Una excepción a la versión adoptada del ARC Development Standard identifica regla, motivo, responsable, alcance, riesgo, duración o condición de revisión y alternativa compensatoria. No permite ignorar restricciones de seguridad/autorización aplicables. La propuesta de adoptar o cambiar una metodología no se presenta como aprobación humana ya recibida.
 
 El registro de cada proyecto describe sus decisiones. Las mejoras de la metodología se revisan en su propio alcance/versionado, sin modificar automáticamente repositorios consumidores.
 

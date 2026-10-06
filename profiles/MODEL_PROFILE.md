@@ -1,6 +1,6 @@
 # MODEL PROFILE — vigente para ALEX v1.3.2 / AXIOM
 
-Fecha del perfil: 2026-10-06. Este archivo es **operativo, no normativo**. Puede actualizarse cuando cambie el catálogo de modelos sin crear una nueva versión del ALEX Development Standard.
+Fecha del perfil: 2026-10-06. Este archivo es **operativo, no normativo**. Puede actualizarse cuando cambie el catálogo de modelos sin crear una nueva versión del ARC Development Standard.
 
 | Capability | Modelo / reasoning actual |
 | --- | --- |

@@ -1,6 +1,6 @@
-# Uso de ALEX Development Standard
+# Uso de ARC Development Standard
 
-ALEX DEVELOPMENT STANDARD **v1.3.2** es la versión vigente y de adopción obligatoria para trabajo nuevo o activo.
+ARC DEVELOPMENT STANDARD **v1.3.2** es la versión vigente y de adopción obligatoria para trabajo nuevo o activo.
 
 ## Runtime recomendado
 **AXIOM + Codex CLI** es la ruta oficial para aplicar capability routing automáticamente. AXIOM se ejecuta desde el directorio del proyecto y coordina modelos sin que el usuario opere el selector.

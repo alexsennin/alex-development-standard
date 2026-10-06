@@ -1,6 +1,6 @@
-# ALEX DEVELOPMENT STANDARD v1.3.2 — Engineering Standard
+# ARC DEVELOPMENT STANDARD v1.3.2 — Engineering Standard
 
-Documento raíz. Estado: **ALEX DEVELOPMENT STANDARD v1.3.2 — vigente y de adopción obligatoria para trabajo nuevo o activo**, 2026-10-06, por decisión de Alex. **AXIOM es el runtime oficial de referencia para ejecución automática del Standard.** Los repositorios consumidores no cambian automáticamente: deben adoptar v1.3.2 de forma explícita antes de su siguiente cambio sustantivo. Independiente de lenguaje, framework, proveedor, dominio e identidad visual.
+Documento raíz. Estado: **ARC DEVELOPMENT STANDARD v1.3.2 — vigente y de adopción obligatoria para trabajo nuevo o activo**, 2026-10-06, por decisión de Alex. **AXIOM es el runtime oficial de referencia para ejecución automática del Standard.** Los repositorios consumidores no cambian automáticamente: deben adoptar v1.3.2 de forma explícita antes de su siguiente cambio sustantivo. Independiente de lenguaje, framework, proveedor, dominio e identidad visual.
 
 ## Principios obligatorios
 

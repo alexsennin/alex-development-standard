@@ -1,4 +1,6 @@
-# ALEX Development Standard
+# ARC Development Standard
+
+**ARC — Adaptive Reasoning & Coding.**
 
 Metodología personal de desarrollo mediante vibecoding y agentes.
 

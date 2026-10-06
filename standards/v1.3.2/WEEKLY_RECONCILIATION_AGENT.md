@@ -1,6 +1,6 @@
 # Agente de conciliación semanal
 
-Este agente es una función **opcional** de ALEX Development Standard para proyectos que tienen Local/Git/Producción o servicios publicados por separado. Una tarea programada puede ejecutarlo una vez por semana; definirlo en el estándar no activa por sí solo ninguna tarea. La programación, proyectos incluidos y permisos se acuerdan al adoptarlo. Un proyecto sólo local no necesita este agente.
+Este agente es una función **opcional** de ARC Development Standard para proyectos que tienen Local/Git/Producción o servicios publicados por separado. Una tarea programada puede ejecutarlo una vez por semana; definirlo en el estándar no activa por sí solo ninguna tarea. La programación, proyectos incluidos y permisos se acuerdan al adoptarlo. Un proyecto sólo local no necesita este agente.
 
 ## Objetivo
 

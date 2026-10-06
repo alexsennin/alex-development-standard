@@ -1,4 +1,4 @@
-# ALEX CORE — contrato operativo v1.3.2
+# ARC CORE — contrato operativo v1.3.2
 
 Este documento es la entrada normativa mínima para ejecución cotidiana. **AXIOM es el runtime oficial de referencia** para aplicar estas reglas con routing automático; Codex Desktop queda como modo de compatibilidad manual. Resume reglas que deben estar presentes en contexto sin cargar todo el Standard. Los documentos especializados amplían estas reglas cuando el modo o efecto lo exige.
 

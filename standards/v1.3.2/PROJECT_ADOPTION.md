@@ -1,6 +1,6 @@
-# Adopción de ALEX DEVELOPMENT STANDARD v1.3.2
+# Adopción de ARC DEVELOPMENT STANDARD v1.3.2
 
-Procedimiento para aplicar la metodología en un repositorio existente o nuevo. **v1.3.2 es la versión obligatoria para todo trabajo nuevo o activo realizado bajo ALEX Development Standard.** La publicación central no modifica automáticamente repositorios consumidores: cada repositorio debe adoptar explícitamente v1.3.2 antes de su siguiente cambio sustantivo.
+Procedimiento para aplicar la metodología en un repositorio existente o nuevo. **v1.3.2 es la versión obligatoria para todo trabajo nuevo o activo realizado bajo ARC Development Standard.** La publicación central no modifica automáticamente repositorios consumidores: cada repositorio debe adoptar explícitamente v1.3.2 antes de su siguiente cambio sustantivo.
 
 El [agente de conciliación semanal](WEEKLY_RECONCILIATION_AGENT.md) es opcional: sólo se programa para proyectos y destinos elegidos expresamente, después de identificar sus fuentes de evidencia. La adopción documental del estándar no crea una automatización por sí misma.
 
