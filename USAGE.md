@@ -1,26 +1,21 @@
 # Uso de ALEX Development Standard
 
-Este repositorio es la **fuente canónica de la metodología**. No es un proyecto consumidor y no debe convertirse en uno.
+Este repositorio es la **fuente canónica de la metodología** y no es un proyecto consumidor.
 
-## Regla principal
+## Versión obligatoria
+ALEX DEVELOPMENT STANDARD **v1.3.1** es la versión vigente y de adopción obligatoria para todo trabajo nuevo o activo realizado bajo esta metodología. Las versiones anteriores son históricas.
 
-- `alexsennin/alex-development-standard` = **SOURCE_REPO / solo lectura durante adopciones**.
-- El repositorio del producto = **TARGET_REPO / único lugar donde se crean o modifican archivos del proyecto**.
+Los repositorios no se modifican automáticamente. Antes del siguiente cambio sustantivo de un proyecto activo, el agente debe adoptar explícitamente `standards/v1.3.1/` en TARGET_REPO conforme a PROJECT_ADOPTION.
 
-Durante una adopción, un agente lee `standards/v1.3/`, pero no edita este repositorio.
+## Entrada rápida
+1. SOURCE_REPO = `alexsennin/alex-development-standard`.
+2. SOURCE_VERSION = `standards/v1.3.1/`.
+3. Leer `standards/v1.3.1/CORE.md`.
+4. Confirmar TARGET_REPO/TARGET_ROOT/rama/estado Git.
+5. Leer `AGENTS.md` del proyecto y sólo los documentos adicionales indicados por la matriz de CORE.
 
-## Estado de v1.3
+## Proyectos reales iniciales
+El Standard se utilizará directamente en trabajo real. Primeros proyectos activos declarados: **Mundo de Colores, Docencia y Fema**. No existe una fase piloto separada.
 
-ALEX DEVELOPMENT STANDARD v1.3 es la versión vigente y recomendada para adopción gradual. Conserva PATCH/FEATURE/SYSTEM/CHECK/RELEASE, niveles 1–4 y economía de contexto de v1.2; v1.0–v1.2 quedan históricas.
-
-La [v1.3](standards/v1.3/README.md) conserva despliegue/migraciones de v1.2 y añade [orquestación de capacidad](standards/v1.3/ORCHESTRATION_STANDARD.md): routing por microtarea, clases de capacidad, fases, escalamiento y delegación interna.
-
-## Antes de adoptar
-
-Comprobar: SOURCE_REPO; SOURCE_VERSION=`standards/v1.3/`; TARGET_REPO; TARGET_ROOT; `<TARGET_ROOT>/project-methodology`; rama y estado Git. Si SOURCE_REPO y TARGET_REPO son iguales, detenerse sin escribir.
-
-## Uso cotidiano
-
-El usuario pide resultados normalmente. El agente infiere modo/nivel y enruta capacidad. PATCH/Nivel 1 permanece ligero. FEATURE compleja/SYSTEM puede mostrar plan por fases; el usuario puede autorizar una, varias o todas. CHECK consolida la ronda y RELEASE sólo se usa para publicar/desplegar con la autorización aplicable.
-
-Si el runtime no soporta routing automático de modelos, usar el mismo plan en compatibilidad manual sin cambiar la metodología.
+## Producción
+Publicar/push no autoriza Producción. Sólo instrucciones explícitas como «despliega en Producción» o «aplica en Producción» habilitan RELEASE para ese entorno y alcance.
