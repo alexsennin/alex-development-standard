@@ -5,69 +5,22 @@ Este repositorio es la **fuente canónica de la metodología**. No es un proyect
 ## Regla principal
 
 - `alexsennin/alex-development-standard` = **SOURCE_REPO / solo lectura durante adopciones**.
-- El repositorio donde se desarrolla un producto = **TARGET_REPO / único lugar donde se crean o modifican archivos del proyecto**.
+- El repositorio del producto = **TARGET_REPO / único lugar donde se crean o modifican archivos del proyecto**.
 
-Durante una adopción, un agente lee `standards/v1.2/`, pero no debe editar, copiar encima ni adaptar esos archivos dentro de este repositorio.
+Durante una adopción, un agente lee `standards/v1.3/`, pero no edita este repositorio.
 
-## Estado de v1.2
+## Estado de v1.3
 
-ALEX DEVELOPMENT STANDARD v1.2 es la versión vigente y recomendada para adopción gradual por proyecto. Conserva los modos PATCH/FEATURE/SYSTEM/CHECK/RELEASE de v1.1 y su economía de contexto. v1.0 y v1.1 permanecen como referencias históricas.
+ALEX DEVELOPMENT STANDARD v1.3 es la versión vigente y recomendada para adopción gradual. Conserva PATCH/FEATURE/SYSTEM/CHECK/RELEASE, niveles 1–4 y economía de contexto de v1.2; v1.0–v1.2 quedan históricas.
 
-La [v1.2](standards/v1.2/README.md) añade una ruta rápida de publicación para cambios sólo de archivos, una ruta ampliada con [protocolo de migraciones](standards/v1.2/MIGRATION_STANDARD.md), una [guía de pedidos](standards/v1.2/PROMPTING_GUIDE.md) y un [agente semanal opcional](standards/v1.2/WEEKLY_RECONCILIATION_AGENT.md). Su publicación central no equivale a adoptarla automáticamente en un producto.
+La [v1.3](standards/v1.3/README.md) conserva despliegue/migraciones de v1.2 y añade [orquestación de capacidad](standards/v1.3/ORCHESTRATION_STANDARD.md): routing por microtarea, clases de capacidad, fases, escalamiento y delegación interna.
 
-## Antes de adoptar en un proyecto
+## Antes de adoptar
 
-El agente debe comprobar y declarar:
+Comprobar: SOURCE_REPO; SOURCE_VERSION=`standards/v1.3/`; TARGET_REPO; TARGET_ROOT; `<TARGET_ROOT>/project-methodology`; rama y estado Git. Si SOURCE_REPO y TARGET_REPO son iguales, detenerse sin escribir.
 
-1. SOURCE_REPO: `alexsennin/alex-development-standard`
-2. SOURCE_VERSION: `standards/v1.2/`
-3. TARGET_REPO: repositorio del producto
-4. TARGET_ROOT: raíz del repositorio del producto
-5. TARGET_METHODOLOGY_DIR: `<TARGET_ROOT>/project-methodology`
-6. Rama y estado Git del TARGET_REPO
+## Uso cotidiano
 
-Si SOURCE_REPO y TARGET_REPO son el mismo repositorio, debe detenerse y no escribir nada.
+El usuario pide resultados normalmente. El agente infiere modo/nivel y enruta capacidad. PATCH/Nivel 1 permanece ligero. FEATURE compleja/SYSTEM puede mostrar plan por fases; el usuario puede autorizar una, varias o todas. CHECK consolida la ronda y RELEASE sólo se usa para publicar/desplegar con la autorización aplicable.
 
-## Estructura recomendada del proyecto consumidor
-
-```text
-<TARGET_ROOT>/
-├── AGENTS.md
-├── README.md
-├── <código y configuración del proyecto>
-└── project-methodology/
-    ├── PROJECT_CONTEXT.md
-    ├── PROJECT_STATE.md
-    ├── ARCHITECTURE.md
-    ├── TODO.md
-    ├── DECISIONS.md
-    ├── ENVIRONMENTS.md        # si aplica
-    ├── RELEASE_STATE.md       # si aplica
-    └── design/
-        ├── DESIGN_SYSTEM.md
-        ├── TOKENS.md
-        ├── COMPONENTS.md
-        └── LAYOUTS.md
-```
-
-`AGENTS.md` permanece en la raíz como **puerta de entrada** para agentes y debe enlazar a `project-methodology/`.
-
-La carpeta `project-methodology/` contiene la memoria persistente y la aplicación local de la metodología. No contiene copias de los documentos normativos de ALEX DEVELOPMENT STANDARD.
-
-`project-methodology/design/` existe sólo si el proyecto tiene UI y esos documentos aportan valor real. No crear archivos o carpetas vacíos para aparentar cumplimiento.
-
-## Qué nunca debe ocurrir durante una adopción
-
-- editar `standards/v1.2/` desde una sesión de adopción;
-- transformar este repositorio en documentación de un producto;
-- crear archivos de contexto del producto dentro de SOURCE_REPO;
-- copiar los documentos normativos del estándar dentro del proyecto consumidor;
-- copiar branding, dominio o deuda técnica de otro proyecto;
-- hacer commits en SOURCE_REPO como parte de la adopción del TARGET_REPO.
-
-La adopción termina únicamente con cambios en TARGET_REPO.
-
-
-## Uso cotidiano tras adoptar v1.2
-
-Durante pruebas iterativas, el usuario puede pedir correcciones normalmente; el agente infiere PATCH/FEATURE/SYSTEM. También puede declarar el modo explícitamente. Usar CHECK al terminar una ronda de correcciones y RELEASE sólo cuando se quiera publicar/desplegar. No ejecutar el protocolo completo de Producción durante PATCH o FEATURE.
+Si el runtime no soporta routing automático de modelos, usar el mismo plan en compatibilidad manual sin cambiar la metodología.

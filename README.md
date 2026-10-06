@@ -10,20 +10,9 @@ Leer primero: [USAGE.md](USAGE.md).
 
 ## Versiones
 
-- [v1.2](standards/v1.2/README.md) — **vigente / recomendado para adopción gradual** (2026-10-05)
+- [v1.3](standards/v1.3/README.md) — **vigente / recomendado para adopción gradual** (2026-10-06)
+- [v1.2](standards/v1.2/README.md) — versión histórica (2026-10-05)
 - [v1.1](standards/v1.1/README.md) — versión histórica (2026-10-03)
 - [v1.0](standards/v1.0/README.md) — versión histórica (2026-09-30)
 
-## Estructura
-
-```text
-alex-development-standard/
-├── README.md
-├── USAGE.md
-└── standards/
-    ├── v1.0/  # referencia histórica
-    ├── v1.1/  # referencia histórica
-    └── v1.2/  # versión central recomendada
-```
-
-Las versiones publicadas bajo `standards/` son referencias de **la metodología**, no números que deban crearse para cada despliegue de una aplicación. Se conserva el historial del estándar para que cada proyecto sepa qué reglas adoptó. Una publicación sencilla de código puede usar sólo el commit o identificador automático del proveedor; ver la [ruta rápida](standards/v1.2/DEPLOYMENT_STANDARD.md#ruta-rápida-paso-a-paso). La adopción de v1.2 se decide por repositorio y no modifica automáticamente los proyectos existentes.
+v1.3 añade [orquestación de capacidad](standards/v1.3/ORCHESTRATION_STANDARD.md) sin cambiar la separación entre desarrollo, CHECK y RELEASE. La adopción se decide por repositorio y no modifica automáticamente proyectos existentes.
