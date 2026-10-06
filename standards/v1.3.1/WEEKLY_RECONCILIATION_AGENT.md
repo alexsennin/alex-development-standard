@@ -17,7 +17,7 @@ Detectar diferencias relevantes entre lo que se desarrolló, lo que está en Git
 
 ## Ejecución semanal
 
-1. Leer las instrucciones del proyecto y la ficha de entornos vigente. Confirmar que está incluido en el piloto y que los destinos son los esperados.
+1. Leer las instrucciones del proyecto y la ficha de entornos vigente. Confirmar que está incluido en el alcance de conciliación semanal y que los destinos son los esperados.
 2. Obtener una fotografía ligera: rama/commit local y remoto pertinentes, cambios sin commit, última revisión de aplicación realmente desplegada, estado de servicios independientes y, si aplica, IDs de migración del destino. Identificar la fuente y fecha de cada dato.
 3. Comparar por capa con la entrega que el proyecto esperaba tener activa y con la última conciliación confiable si está disponible. Si no existe una línea base accesible, indicarlo y crear una primera fotografía sin suponer que `main` debe coincidir con Producción. No exigir que Local y Producción tengan los mismos datos operativos.
 4. Investigar sólo diferencias materiales: cambios de código que deberían estar desplegados, migraciones pendientes o divergentes, funciones incompatibles, destino equivocado, fallos del flujo crítico o evidencia insuficiente para afirmar alineación. Si una diferencia es esperada, registrarla como tal y no alertar repetidamente.
@@ -25,7 +25,7 @@ Detectar diferencias relevantes entre lo que se desarrolló, lo que está en Git
 
 ## Cuándo avisar
 
-Enviar una primera línea base breve al iniciar el piloto. Después, avisar sólo ante diferencia nueva o agravada, fallo de la revisión, cambio de estado que resuelva una incidencia o decisión requerida. Si todo sigue igual y no hay acción, permanecer en silencio; el historial de la tarea conserva la ejecución. No enviar resúmenes semanales repetidos por calendario.
+Enviar una primera línea base breve al iniciar la conciliación semanal. Después, avisar sólo ante diferencia nueva o agravada, fallo de la revisión, cambio de estado que resuelva una incidencia o decisión requerida. Si todo sigue igual y no hay acción, permanecer en silencio; el historial de la tarea conserva la ejecución. No enviar resúmenes semanales repetidos por calendario.
 
 Una incidencia debe indicar: **proyecto y entorno; capa afectada; esperado y observado; fuente/fecha; riesgo práctico; acción propuesta; verificación pendiente**. No incluir secretos, tokens, datos personales ni volcados de base.
 
@@ -37,7 +37,7 @@ El agente semanal no es puerta obligatoria para la [ruta rápida de publicación
 
 ```text
 Una vez por semana, concilia en modo de solo lectura los proyectos
-explícitamente incluidos en el piloto. Lee sus instrucciones y fichas de
+explícitamente incluidos en el alcance de conciliación semanal. Lee sus instrucciones y fichas de
 entornos. Compara Git, artefacto activo, migraciones y servicios sólo donde
 apliquen; empieza por metadatos y profundiza ante diferencias materiales.
 Distingue cambios esperados de incidencias. No escribas código, datos,
