@@ -4,7 +4,7 @@ El handoff transfiere un estado comprobable y una siguiente acción a otro chat/
 
 ## Cierre proporcional al modo
 
-Durante una ronda PATCH/FEATURE, una respuesta breve con cambio, prueba y pendiente puede bastar. No forzar commit, push, actualización de STATE o handoff completo después de cada corrección. CHECK es el punto natural para consolidar la ronda. SYSTEM y la ruta ampliada de RELEASE mantienen cierre reforzado. La ruta rápida de RELEASE usa el [registro breve de publicación](DEPLOYMENT_STANDARD.md#ruta-rápida-paso-a-paso).
+Durante una ronda PATCH/FEATURE, una respuesta breve con cambio, prueba y pendiente puede bastar. No forzar commit, push, actualización de STATE o handoff completo después de cada corrección. CHECK es el punto natural para consolidar la ronda. SYSTEM y la ruta ampliada de RELEASE mantienen cierre reforzado. La ruta rápida de RELEASE usa el [registro breve de despliegue](DEPLOYMENT_STANDARD.md#ruta-rápida-paso-a-paso).
 
 ## Procedimiento de CHECK, SYSTEM o RELEASE ampliado
 

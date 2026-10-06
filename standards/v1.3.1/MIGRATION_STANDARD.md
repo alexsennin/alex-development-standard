@@ -1,6 +1,6 @@
 # Migraciones y cambios de datos persistentes
 
-Este protocolo se usa cuando la entrega cambia esquema, datos, permisos persistentes o contratos entre aplicación y almacenamiento. No se ejecuta para una [publicación sencilla sólo de archivos](DEPLOYMENT_STANDARD.md#ruta-rápida-paso-a-paso). Cada proyecto define comandos y proveedor; estas reglas describen el resultado necesario.
+Este protocolo se usa cuando la entrega cambia esquema, datos, permisos persistentes o contratos entre aplicación y almacenamiento. No se ejecuta para una [despliegue sencillo sólo de archivos](DEPLOYMENT_STANDARD.md#ruta-rápida-paso-a-paso). Cada proyecto define comandos y proveedor; estas reglas describen el resultado necesario.
 
 ## Preparar una migración
 

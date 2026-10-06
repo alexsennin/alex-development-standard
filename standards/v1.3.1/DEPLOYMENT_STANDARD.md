@@ -4,13 +4,13 @@ Este documento se ejecuta operativamente en **RELEASE mode**. PATCH, FEATURE, SY
 
 Desplegar significa aplicar una versión o cambio a un entorno de ejecución: aplicación, script, configuración, datos, archivos operativos o DNS. Publicar significa hacer disponible un entregable en Git o un repositorio/registro de artefactos. **Publicar nunca equivale a desplegar ni concede autorización para Producción.** Usar el [vocabulario de evidencia](ENGINEERING_STANDARD.md#vocabulario-de-evidencia). Los mecanismos concretos se documentan en cada proyecto. Commit, push, merge y despliegue son operaciones distintas aunque una automatización las conecte.
 
-## Elegir la ruta de publicación
+## Elegir la ruta de despliegue
 
 La clasificación se hace por efectos, no por número de archivos. Para una entrega que reúna varios cambios, evaluar el conjunto. Si un componente exige la ruta ampliada, separar entregas compatibles cuando sea práctico; no llamar sencilla a la entrega completa por contener también cambios visuales.
 
 | Ruta | Cuándo aplica | Trabajo suficiente |
 | --- | --- | --- |
-| **Rápida: sólo archivos de aplicación** | Código o recursos estáticos que no cambian esquema, datos existentes, contratos de escritura, autorización, secretos, configuración, infraestructura ni servicios que se publican aparte; destino y mecanismo de despliegue conocidos; reversión del artefacto disponible | Diff y prueba pertinente, identificar destino y revisión de Git/artefacto, publicar por el mecanismo habitual, comprobar disponibilidad y recorrido afectado, registrar resultado breve |
+| **Rápida: sólo archivos de aplicación** | Código o recursos estáticos que no cambian esquema, datos existentes, contratos de escritura, autorización, secretos, configuración, infraestructura ni servicios que se publican aparte; destino y mecanismo de despliegue conocidos; reversión del artefacto disponible | Diff y prueba pertinente, identificar destino y revisión de Git/artefacto, desplegar o aplicar por el mecanismo habitual, comprobar disponibilidad y recorrido afectado, registrar resultado breve |
 | **Ampliada: datos, contratos o varios destinos** | Migraciones, importaciones/borrados, cambios en cómo se escriben o interpretan datos, auth/RLS, pagos, secretos, infraestructura, DNS, funciones/servicios independientes, incompatibilidad entre componentes o destino incierto | Preflight por capas afectadas, secuencia compatible, respaldo/recuperación según riesgo, validación y registro reforzados |
 
 **Ruta rápida no exige** número de versión manual, etiqueta Git, changelog, `RELEASE_STATE.md`, cotejo de historiales de migraciones, respaldo de la base ni suite completa sólo por tocar Producción. El commit de Git, identificador de despliegue o revisión que emita el proveedor sirve para saber qué archivos quedaron activos y volver al artefacto anterior. No se inventa una versión numerada por cada reemplazo. Si el proveedor exige crear una versión para conservar la misma URL (por ejemplo, algunos despliegues de Apps Script), esa operación técnica sí se realiza.

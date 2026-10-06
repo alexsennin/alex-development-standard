@@ -57,7 +57,7 @@ CHECK no despliega.
 
 ## RELEASE — entrega
 
-RELEASE ejecuta [DEPLOYMENT_STANDARD](DEPLOYMENT_STANDARD.md#elegir-la-ruta-de-publicación). Primero decide si basta la ruta rápida de archivos o si hay efectos de datos, contratos o varios destinos. La ruta rápida usa el identificador automático disponible, verificación focal y cierre breve; no requiere versión numerada, conciliación de migraciones ni respaldo de DB. La ruta ampliada comprueba únicamente las capas implicadas. Si un push dispara Producción, ese push forma parte de RELEASE y no de un PATCH/CHECK ordinario.
+RELEASE ejecuta [DEPLOYMENT_STANDARD](DEPLOYMENT_STANDARD.md#elegir-la-ruta-de-despliegue). Primero decide si basta la ruta rápida de archivos o si hay efectos de datos, contratos o varios destinos. La ruta rápida usa el identificador automático disponible, verificación focal y cierre breve; no requiere versión numerada, conciliación de migraciones ni respaldo de DB. La ruta ampliada comprueba únicamente las capas implicadas. Si un push dispara Producción, ese push forma parte de RELEASE y no de un PATCH/CHECK ordinario.
 
 ## Economía de contexto
 
