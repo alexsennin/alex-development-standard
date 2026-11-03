@@ -1,6 +1,6 @@
 # AXIOM — Development Orchestration Runtime
 
-AXIOM es el runtime oficial de referencia para ejecutar ARC Development Standard con routing automático de capacidad. **AXIOM no es un modelo**: coordina Codex CLI y decide qué modelo/reasoning usar en cada actividad.
+AXIOM es un **runtime opcional** para ejecutar ARC Development Standard con routing automático de capacidad. ARC no requiere AXIOM y también se aplica desde Codex o Antigravity. **AXIOM no es un modelo**: coordina Codex CLI y decide qué modelo/reasoning usar en cada actividad.
 
 ## Relación de componentes
 ```text
@@ -13,7 +13,7 @@ Modelos                    → aportan capacidad ROUTER/FOCUSED/ADVANCED/EXPERT/
 ## Economía
 La configuración predeterminada de AXIOM usa **Codex CLI autenticado con la cuenta de ChatGPT**, no una API key. De ese modo el uso se contabiliza contra la cuota de Codex incluida en el plan del usuario. Si se configura una API key propia, deja de ser el perfil económico predeterminado y aplican las condiciones/precios de API.
 
-## Flujo oficial
+## Flujo de AXIOM (solo cuando se utiliza)
 1. El usuario ejecuta `axiom` desde `TARGET_ROOT` y expresa la intención.
 2. AXIOM carga `CORE.md`, `AGENTS.md` y el contexto mínimo.
 3. ROUTER clasifica modo/nivel/capacidad y emite salida estructurada; no implementa.
@@ -45,7 +45,7 @@ AXIOM no interpreta `publica`, `push` o `sube` como autorización de Producción
 
 ## Modo inicial
 - **AXIOM:** ROUTER puede usar la capacidad económica definida en MODEL_PROFILE (actualmente Luna Bajo), porque su ejecución es aislada y sin escritura.
-- **Codex Desktop:** iniciar con FOCUSED (actualmente Luna Alto). El cambio de modelo es manual.
+- **Otros entornos:** Codex y Antigravity usan directamente CORE, TASK_MANAGEMENT y MODEL_PROFILE; no deben replicar automáticamente este flujo AXIOM.
 
 ## Estado de implementación
-El Standard define el contrato de AXIOM. La implementación de referencia debe ser local, secuencial inicialmente y conservadora: routing, planificación, ejecución local y validación antes de añadir concurrencia o RELEASE automático.
+Este documento describe el contrato específico de AXIOM, no una dependencia general de ARC. La implementación de referencia debe ser local, secuencial inicialmente y conservadora: routing, planificación, ejecución local y validación antes de añadir concurrencia o RELEASE automático.
