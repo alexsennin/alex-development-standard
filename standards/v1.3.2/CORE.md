@@ -1,6 +1,6 @@
 # ARC CORE — contrato operativo v1.3.2
 
-Este documento es la entrada normativa mínima para ejecución cotidiana. **AXIOM es el runtime oficial de referencia** para aplicar estas reglas con routing automático; Codex Desktop queda como modo de compatibilidad manual. Resume reglas que deben estar presentes en contexto sin cargar todo el Standard. Los documentos especializados amplían estas reglas cuando el modo o efecto lo exige.
+Este documento es la entrada normativa mínima para ejecución cotidiana. **ARC es independiente del entorno de ejecución**: Codex, Antigravity o AXIOM aplican las mismas reglas. AXIOM es un orquestador opcional, no un requisito. Resume reglas que deben estar presentes en contexto sin cargar todo el Standard. Los documentos especializados amplían estas reglas cuando el modo o efecto lo exige.
 
 ## 1. Autoridad
 - Usuario + `AGENTS.md` autorizado definen intención, alcance, destino y límites.
@@ -17,8 +17,9 @@ Este documento es la entrada normativa mínima para ejecución cotidiana. **AXIO
 Empezar con el mínimo suficiente y ampliar por evidencia. No releer documentos estables por ritual. Escalar sin reiniciar: transferir hechos, hipótesis probadas, intentos y evidencia.
 
 ## 4. Routing
-- En **AXIOM**, la selección de modelo/reasoning es responsabilidad del runtime; el usuario no cambia modelos manualmente.
-- En **Codex Desktop**, usar Luna Alto como inicio seguro y cambiar manualmente sólo cuando el Standard lo exija; Luna Bajo no es modelo inicial recomendado en ese modo.
+- Evaluar modo, nivel y capacidad antes de recomendar modelo; consultar el perfil operativo no normativo en `profiles/MODEL_PROFILE.md` y la recomendación por tarea en `TASK_MANAGEMENT.md`.
+- En **Codex** y **Antigravity**, el modelo se selecciona con las opciones reales del entorno; recomendar un modelo no cambia automáticamente el selector.
+- En **AXIOM**, si se usa, el runtime puede hacer routing automático según su contrato opcional.
 - PATCH/Nivel 1 inequívoco puede ir directo a FOCUSED.
 - Incertidumbre de causa/arquitectura → EXPERT.
 - Señales de auth, permisos/RLS, secretos, pagos, migraciones/schema, datos existentes, borrados, DNS, infraestructura, Producción, contratos entre servicios o escrituras masivas/destructivas → **EXPERT obligatorio antes de editar**.
@@ -38,10 +39,11 @@ Descomponer trabajo complejo en unidades de comportamiento verificables, no por 
 - Nivel 4 requiere revisión EXPERT independiente en contexto separado antes de RELEASE.
 - RELEASE verifica el entorno después de desplegar.
 
-## Runtime
-- Oficial: [AXIOM_RUNTIME.md](AXIOM_RUNTIME.md) + Codex CLI autenticado con ChatGPT.
-- Compatibilidad: Codex Desktop con routing manual.
-- AXIOM no usa una API key por defecto; si Codex CLI inicia sesión con ChatGPT, el consumo se aplica a la cuota de Codex del plan.
+## Entorno de ejecución
+- **Normativa independiente de herramientas:** ARC se aplica en Codex, Antigravity o cualquier entorno capaz de respetar su contrato, independientemente del proveedor del modelo.
+- **Orquestación opcional:** [AXIOM_RUNTIME.md](AXIOM_RUNTIME.md) define exclusivamente la implementación de AXIOM y no condiciona el uso de ARC.
+- Las políticas de autorización, pruebas, gestión de tareas y RELEASE son idénticas en todos los entornos.
+- La disponibilidad, las cuotas y el método de facturación dependen de cada plataforma; no inferirlos del Standard.
 
 ## Matriz de carga normativa
 | Situación | Leer además de `CORE.md` + `AGENTS.md` |
