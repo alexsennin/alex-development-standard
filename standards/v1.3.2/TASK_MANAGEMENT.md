@@ -47,3 +47,41 @@ Cuando una tarea grande se descompone para asignar capacidad, cada microtarea de
 Ejemplo adecuado: «evitar doble envío desde la interfaz», incluyendo estado, bloqueo, manejo de error y prueba de doble clic. Ejemplos demasiado finos: «crear variable», «añadir import», «cambiar línea 42».
 
 Las microtareas pueden agruparse en fases. Una fase debe producir un estado coherente y verificable; no dividir por modelo si esa división deja el sistema inconsistente. La asignación de capacidad/modelo es metadato operativo y no sustituye problema, aceptación ni estado de la tarea.
+
+## Evaluador de tarea: modelo recomendado
+
+Durante la maquetación, apuntes y definición de tareas, el agente que esté activo puede **recomendar** un modelo para cada tarea antes de implementarla. Esto no crea un agente adicional, no exige AXIOM y funciona tanto en Codex como en Antigravity. La recomendación es metadato operativo: **no sustituye** modo, nivel de cambio, capacidad, criterios de aceptación, autorizaciones ni validaciones del Standard.
+
+Añadir a la tarea el campo **Modelo recomendado** cuando ayude a decidir dónde ejecutarla. Formato breve: `Modelo recomendado: [modelo] — [motivo en una frase]`. Si el trabajo todavía es demasiado ambiguo, registrar `Por evaluar` y concretar primero el resultado esperado.
+
+### Catálogo inicial de modelos (perfil práctico, revisable)
+
+| Modelo | Recomendación inicial |
+| --- | --- |
+| Gemini 3.8 Flash | Ejecución habitual: UI, componentes, cambios localizados, pruebas, documentación y funciones bien especificadas. |
+| GPT-6.1 Terra | Alternativa eficiente desde Codex para tareas focalizadas y ejecución con instrucciones claras. |
+| GPT-6.1 Sol | Diagnóstico complejo, decisiones de arquitectura, análisis de impacto, migraciones delicadas y revisión de alto riesgo. |
+| Gemini 4 Argon | Alternativa de razonamiento avanzado en Antigravity para arquitectura, depuración difícil o problemas de varios módulos. |
+
+Estas asignaciones son **hipótesis operativas**, no una clasificación definitiva de rendimiento. No asumir que Argon o Sol es superior en todas las tareas. Elegir el modelo de **menor costo/cuota esperada que tenga capacidad suficiente**; cuando las cuotas reales de la suscripción no sean comparables, dar preferencia al modelo disponible en el entorno ya abierto, sin rebajar los controles requeridos. Los nombres de los modelos y su disponibilidad pueden cambiar; consultar el selector vigente antes de ejecutar.
+
+### Decisión ligera antes de trabajar
+
+1. Definir problema, resultado observable, dependencias y aceptación; no recomendar modelo sólo por el tamaño aparente del cambio.
+2. Evaluar **incertidumbre técnica**, **alcance entre módulos**, **riesgo para datos/seguridad/Producción** y **claridad de las pruebas**. Respetar la clasificación de nivel y capacidad de CORE.
+3. Si la tarea está bien especificada y es de bajo riesgo, preferir Gemini 3.8 Flash o GPT-6.1 Terra, según el entorno de trabajo.
+4. Si la causa es incierta, involucra arquitectura o requiere capacidad EXPERT por CORE, recomendar GPT-6.1 Sol o Gemini 4 Argon **para el análisis previo**. Tras producir límites, plan y criterios claros, se puede recomendar Flash/Terra para implementar la parte segura.
+5. Registrar un motivo de una frase, no un informe ni una puntuación artificial. Una tarea puede indicar `Análisis: Sol/Argon; ejecución: Flash/Terra` cuando realmente necesite etapas diferentes. Si no, basta un modelo.
+6. Reevaluar sólo si cambian alcance, riesgo, evidencia o disponibilidad, o si el agente falla dos veces sin nueva información. No cambiar de modelo por ritual.
+
+**Ejemplo de entrada en TODO.md**:
+
+```md
+- ID: UI-014
+  Problema: El botón de confirmar no es visible en móvil.
+  Aceptación: Visible y operable a 360 px, por teclado y sin afectar el formulario.
+  Estado: Pendiente
+  Modelo recomendado: Gemini 3.8 Flash — cambio de interfaz acotado con pruebas claras.
+```
+
+**Límite importante:** una recomendación no cambia automáticamente el modelo del IDE. Codex o Antigravity siguen ejecutando el modelo seleccionado por el usuario o por su propio entorno. Nunca asumir revisión independiente cuando el mismo agente evalúa y ejecuta.
