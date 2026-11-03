@@ -1,29 +1,31 @@
-# MODEL PROFILE — vigente para ALEX v1.3.2 / AXIOM
+# MODEL PROFILE — ARC (perfil operativo multiplataforma)
 
-Fecha del perfil: 2026-10-06. Este archivo es **operativo, no normativo**. Puede actualizarse cuando cambie el catálogo de modelos sin crear una nueva versión del ARC Development Standard.
+Este archivo es **operativo, no normativo**. Puede actualizarse cuando cambien modelos, cuotas y entornos sin cambiar las reglas de ARC. Los nombres listados representan las opciones preferidas del usuario; comprobar su disponibilidad exacta en el selector antes de utilizarlos.
 
-| Capability | Modelo / reasoning actual |
-| --- | --- |
-| ROUTER | GPT-6 Luna · Bajo |
-| FOCUSED | GPT-6 Luna · Alto |
-| ADVANCED | GPT-6 Luna · Muy Alto; Máximo sólo cuando la naturaleza de ejecución lo justifique |
-| EXPERT | GPT-6.1 Sol con reasoning proporcional; Sol equivalente si es la opción disponible |
-| FRONTIER | Astra cuando la ambigüedad/impacto justifique capacidad frontier |
+## Preferencias de trabajo
 
-Reglas:
-- No tratar reasoning como escalera obligatoria antes de cambiar de modelo.
-- Para causa raíz/arquitectura, preferir EXPERT antes que forzar indefinidamente un modelo eficiente en Máximo.
-- Para implementación especificada y mecánica, volver a FOCUSED/ADVANCED.
-- El costo es señal de routing, nunca razón para rebajar seguridad, autorización o revisión obligatoria.
-## Perfil por runtime
+| Capacidad / actividad | Preferencia en Antigravity | Preferencia en Codex |
+| --- | --- | --- |
+| ROUTER (clasificación sin escritura) | Gemini 3.8 Flash | GPT-6.1 Terra |
+| FOCUSED (tareas concretas, bien acotadas) | Gemini 3.8 Flash | GPT-6.1 Terra |
+| ADVANCED (ejecución con varias piezas, pruebas) | Gemini 3.8 Flash; escalar si no es suficiente | GPT-6.1 Terra; escalar si no es suficiente |
+| EXPERT (diagnóstico, arquitectura y revisión de riesgo) | Gemini 4 Argon | GPT-6.1 Sol |
+| FRONTIER (casos extraordinarios) | Mejor capacidad disponible justificada por el problema | Mejor capacidad disponible justificada por el problema |
 
-### AXIOM — automático
-- ROUTER: GPT-6 Luna · Bajo; sólo clasificación estructurada, sin escritura.
-- FOCUSED/ADVANCED/EXPERT/FRONTIER: AXIOM selecciona automáticamente según capability.
+**Principio:** recomendar el modelo de menor consumo esperado con capacidad suficiente para la tarea, sin reducir seguridad ni pruebas. La recomendación concreta se registra en `TASK_MANAGEMENT.md`/TODO de cada proyecto cuando aporte valor.
 
-### Codex Desktop — compatibilidad manual
-- Modelo inicial recomendado: **FOCUSED / GPT-6 Luna · Alto**.
-- No iniciar con Luna Bajo esperando routing automático.
-- Si el Standard requiere EXPERT/FRONTIER/ADVANCED diferente, el usuario cambia el selector manualmente.
+## Reglas de selección
 
-AXIOM debe mantener los identificadores exactos de modelos como configuración reemplazable; si un nombre deja de estar disponible, se actualiza este perfil/runtime sin cambiar la metodología.
+- La **capacidad** se define por las tres dimensiones de CORE; la **marca/modelo** es una asignación operativa y reemplazable.
+- Los cambios pequeños y de riesgo bajo pueden iniciarse directamente en FOCUSED; la incertidumbre de causa raíz, arquitectura, autenticación, permisos, pagos, migraciones, datos, Producción o infraestructura exige análisis EXPERT antes de editar según CORE.
+- Un análisis EXPERT puede entregar un Execution Packet para que FOCUSED/ADVANCED implemente la parte segura.
+- No escalar por ritual ni repetir un mismo intento más de dos veces sin evidencia nueva.
+- Codex y Antigravity **no cambian de modelo automáticamente** por leer este documento. El usuario o las capacidades explícitas del entorno deciden el modelo activo.
+- Si el modelo sugerido no está disponible, usar una alternativa de capacidad suficiente y registrar la desviación si afecta la tarea.
+- No asumir equivalencias exactas de calidad, precios, tokens ni cuotas entre proveedores sin una medición comparable.
+
+## AXIOM (opcional)
+
+Si se ejecuta AXIOM, este puede elegir modelo y razonamiento automáticamente conforme a `standards/v1.3.2/AXIOM_RUNTIME.md` y su propia configuración. Esa automatización **no es un requisito de ARC**.
+
+Los identificadores exactos de modelos y su disponibilidad pertenecen al adaptador/runtime que los invoque, no al contrato normativo de ARC.
