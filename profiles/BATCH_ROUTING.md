@@ -5,7 +5,7 @@
 **Modelos vigentes:** [MODEL_PROFILE](MODEL_PROFILE.md).
 
 ## Objetivo
-Permitir que un orquestador revise el backlog, agrupe tareas compatibles en lotes ejecutables, **seleccione y recomiende explícitamente UN modelo y UN nivel de pensamiento por lote al usuario**, con alternativa argumentada según capacidad, calidad y ahorro esperado por tarea aprobada, y entregue un **prompt neutral** que pueda pegarse en cualquier agente. Tras la ejecución, el constructor devuelve un **prompt neutral de auditoría**. No requiere AXIOM, nuevo chat, nueva aplicación ni nuevos archivos por lote.
+Permitir que un orquestador revise el backlog, agrupe tareas compatibles en lotes ejecutables, **seleccione y recomiende explícitamente UN modelo y UN nivel de pensamiento por lote al usuario**, con alternativa argumentada según capacidad, calidad y ahorro esperado por tarea aprobada, y entregue un **prompt neutral** que pueda pegarse en cualquier agente. Tras la ejecución, el constructor **publica el estado y la evidencia en GitHub**; el retorno predeterminado es un **disparador breve y neutral de auditoría**, no la repetición del informe. Un handoff extendido se reserva para casos en que el auditor no pueda acceder a la evidencia. No requiere AXIOM, nuevo chat, nueva aplicación ni nuevos archivos por lote.
 
 ## Separación estricta: tarjeta de enrutamiento vs. prompt copiable
 
@@ -20,7 +20,8 @@ Permitir que un orquestador revise el backlog, agrupe tareas compatibles en lote
 - No nombrar modelo, proveedor, IDE, plataforma o aplicación de IA.
 - No preguntar ni discutir con el agente ejecutor dónde se trabaja o qué modelo se usa.
 - No incluir instrucciones de cambiar de modelo ni recomendaciones de router.
-- Sí incluir repositorio, tarea/IDs, objetivos, contexto/contratos, dependencias, autorización, límites, pruebas y entrega.
+- En ejecución, sí incluir repositorio, tarea/IDs, objetivos, contexto/contratos, dependencias, autorización, límites, pruebas y entrega.
+- En retorno, usar sólo el identificador de lote y rama/ref cuando permitan resolver sin ambigüedad los registros publicados; SOL lee evidencia desde GitHub.
 - Mantener la decisión **fuera** del texto copiable, incluso para el prompt de retorno.
 
 ## Selección del constructor o revisor (sólo tarjeta privada del usuario)
@@ -47,8 +48,9 @@ Esta tabla **no es parte del prompt**. Valorar cuota restante, contexto disponib
 5. Registrar ID de lote, tareas, estado y siguiente paso en los documentos *ya existentes*, sólo cuando realmente cambien. **Emitir obligatoriamente una recomendación principal y una alternativa con niveles concretos de pensamiento por cada lote**, fuera del prompt copiable; cuando el nivel exacto no esté verificado en el selector, declarar esa incertidumbre en la tarjeta. Si la dificultad de un lote exigiría gastar capacidad superior sólo para algunas tareas, dividirlo.
 6. El usuario autoriza uno o varios lotes, copia los prompts y decide manualmente dónde y con qué modelo ejecutarlos.
 7. El ejecutor completa las tareas autorizadas sin requerir aprobación rutinaria entre microtareas, prueba y corrige dentro del alcance. Si una tarea se bloquea, documenta la causa y continúa sólo con las independientes y seguras.
-8. Ejecutar CHECK proporcional, producir resultados y prompt de auditoría. El revisor inspecciona directamente diff/commits y evidencias, no toma el resumen del constructor como prueba. Cierra tareas sólo cuando se cumple aceptación y autorización.
-9. Si hay fallas, retornar correcciones acotadas; si hay hechos nuevos o dos intentos sin progreso, replanificar o elevar la tarea afectada. No gastar cuota repetidamente.
+8. Ejecutar CHECK proporcional; registrar en los archivos existentes de ARC el lote ejecutado, su estado **pendiente de auditoría**, rama, SHAs, criterios, pruebas/resultados y bloqueos, sin inventar verificaciones. Crear commit y hacer push al remoto autorizado cuando corresponda; confirmar la referencia publicada. El retorno al usuario es un disparador breve de auditoría con lote y rama, no un nuevo informe extenso. Si no hay evidencia publicada y verificable, declarar «No publicado / no verificable en GitHub» y entregar handoff proporcional como excepción.
+9. El auditor ubica el lote y la referencia exacta en GitHub, verifica diff/commits, contratos y pruebas; no confía en resúmenes del constructor. Cierra tareas sólo cuando se cumple aceptación y autorización.
+10. Si hay fallas, retornar correcciones acotadas; si hay hechos nuevos o dos intentos sin progreso, replanificar o elevar la tarea afectada. No gastar cuota repetidamente.
 
 **Paradas obligatorias:** cambios materiales de alcance o contrato, migraciones no previstas, permisos/secretos/auth, dinero/datos productivos, operación destructiva, despliegue en Producción o falta de seguridad para revertir. Un lote no concede autorización para RELEASE ni para tareas adicionales.
 
@@ -111,38 +113,40 @@ archivos modificados, rama, commits, push/remoto si aplica, bloqueos y
 siguientes pasos. No consideres aprobada una tarea que requiera auditoría
 independiente sólo por haberla implementado.
 
-Termina con un bloque titulado «PROMPT DE AUDITORÍA» listo para copiar.
-Este bloque debe ser autosuficiente y contener solo la información necesaria
-para la revisión técnica y el seguimiento del lote.
+Deja registrados en el seguimiento de ARC el lote, rama/ref, commits,
+pruebas y resultado, y sincroniza con el remoto autorizado cuando corresponda.
+No afirmes que el auditor tiene acceso a cambios sólo locales o no publicados.
+Termina con «PROMPT DE AUDITORÍA» breve, listo para copiar, que indique el
+lote y la rama/ref necesarios para consultar GitHub. Sólo adjunta un handoff
+más detallado si los cambios no quedaron publicados o falta acceso a ellos.
 ```
 
-## Plantilla B — prompt de retorno del constructor para revisión
+## Plantilla B — retorno Git-first (predeterminada)
 
-El constructor sustituye los marcadores por resultados **reales**, no inventados. Si algún dato no está disponible, declara `No verificado`.
+**GitHub remoto es la fuente única de verdad compartida.** Los archivos locales son un espacio de trabajo y los chats no conservan un estado autoritativo. Toda tarea lista para auditoría remota debe identificar de forma verificable la **rama/ref publicada**, el **ID del lote**, las **tareas** y los **SHAs** pertinentes en el seguimiento de ese repositorio. Mantener allí también resultados de pruebas, pendientes y criterios de aceptación; no duplicar documentos si ya existe un tablero o registro válido.
+
+No asumir que «el último lote» es inequívoco cuando hay múltiples ramas o tres frentes concurrentes. Si hay más de un lote pendiente de auditoría, usar **ID + rama/ref**. La publicación en GitHub **no equivale** a despliegue y nunca lo autoriza.
+
+### B1. Prompt breve de retorno (siempre que el estado esté publicado y accesible)
 
 ```text
-ARC — AUDITORÍA DE LOTE
-Lote: [BATCH_ID]
-Repositorio: [REPO]
-Rama/base: [BRANCH/REF]
-Tareas: [IDs y estado reportado por el constructor]
-Commits/diff: [SHAs, URLs o referencia local comprobable]
-Archivos modificados: [lista]
-Criterios de aceptación: [referencias]
-Pruebas y resultados: [comandos, salidas significativas, omisiones]
-Riesgos y bloqueos: [lista, o ninguno verificado]
-Estado Git: [working tree, push, remoto; no inferir]
-Autorizaciones relevantes: [existentes y no concedidas]
-
-Audita el trabajo directamente contra el repositorio y los criterios.
-Comprueba diff, pruebas, regresiones, contratos, datos, permisos y coherencia
-entre tareas. No asumas que la declaración del constructor demuestra éxito.
-
-Para cada tarea devuelve APROBADA, CORRECCIONES o BLOQUEADA, con evidencia
-concreta. Actualiza el seguimiento cuando corresponda conforme a ARC.
-Si hay correcciones, prepara un nuevo lote acotado con sus criterios,
-sin ampliar silenciosamente el alcance. No ejecutes despliegues en Producción.
+ARC — REVISIÓN DE LOTE
+Revisa el lote [BATCH_ID] de la rama [BRANCH/REF] usando
+el estado y la evidencia publicados en el repositorio [REPO].
+Comprueba los cambios y las pruebas, dicta el estado de cada
+tarea y actualiza el seguimiento conforme a ARC.
+Prepara correcciones o el siguiente paso según el resultado.
 ```
+
+Si un proyecto contiene un único lote pendiente de auditoría y su rama está inequívocamente establecida, puede bastar: «Revisa el último lote pendiente de auditoría conforme a ARC y actualiza el seguimiento». No usar esa forma si existen varios candidatos.
+
+### B2. Excepción: no hay evidencia remota verificable
+
+Cuando el constructor sólo dispone de cambios locales, commits no publicados, working tree sucio o un remoto inaccesible, debe indicarlo **explícitamente**. No declarar un lote «listo para auditoría remota» ni inventar SHAs publicados. Entregar un handoff proporcional de [SESSION_HANDOFF.md](../standards/v1.3.2/SESSION_HANDOFF.md), que incluya datos realmente comprobados y explique qué resta sincronizar. El auditor sólo evalúa lo que realmente puede acceder; puede requerir la misma carpeta de trabajo o solicitar publicación/traspaso autorizado.
+
+### B3. Regla de auditoría
+
+El auditor debe comprobar **la versión exacta** y no limitarse a leer el tablero: revisar commits/diff y ejecutar o contrastar pruebas pertinentes cuando disponga de acceso. Para cada tarea emitir APROBADA, CORRECCIONES o BLOQUEADA con evidencias, y actualizar el estado en el repositorio autorizado. No aprobar automáticamente por un «completado» del constructor; no realizar RELEASE sin autorización explícita.
 
 ## Pruebas de eficiencia
 
@@ -150,7 +154,7 @@ Medir por lote: tareas **aprobadas**, reintentos, minutos hasta aprobación, cuo
 
 ## Límites y compatibilidad
 
-- No introducir un segundo sistema de tickets: `TODO.md` conserva IDs/estados; `PROJECT_STATE.md` resume el siguiente paso; `DECISIONS.md` registra decisiones duraderas.
+- No introducir un segundo sistema de tickets: `TODO.md` o el tablero existente conserva IDs/estados; `PROJECT_STATE.md` resume el siguiente paso; `DECISIONS.md` registra decisiones duraderas. Registrar allí el lote pendiente de auditoría, SHAs y evidencia de forma recuperable.
 - Tres chats pueden representar tres áreas; si ejecutan código en paralelo, aislar ramas/worktrees y coordinar cambios compartidos antes de integrar.
 - Mantener las distinciones ARC: implementación ≠ auditoría; commit ≠ push; push ≠ merge; merge ≠ despliegue.
 - Una tarjeta de ruta no sustituye autorización, control de acceso ni revisión independiente requerida por el nivel.
