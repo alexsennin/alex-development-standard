@@ -7,9 +7,32 @@
 
 ## Regla central de enrutamiento
 
-**El modelo y la plataforma son decisión exclusiva del usuario.** El orquestador presenta fuera del prompt una recomendación, alternativa y justificación. **NUNCA insertar nombres de modelos, proveedores, IDE, plataforma ni instrucciones para cambiar de modelo dentro del prompt copiable de ejecución o del prompt de retorno.** El agente receptor únicamente recibe las tareas y los criterios de trabajo; no se le consulta a qué modelo/plataforma enviarlo.
+**OBLIGACIÓN DEL ORQUESTADOR: recomendar, no limitarse a ofrecer opciones.** Para **cada lote**, antes de mostrar el prompt copiable, emitir una **recomendación concreta de un modelo y su nivel/esfuerzo de pensamiento**, más **una alternativa concreta con su nivel** y un argumento breve de calidad/eficiencia. El análisis de qué IA conviene se hace **por el orquestador**, no por el usuario ni por el agente ejecutor. Debe decir literalmente qué modelo recomienda para ese lote y por qué. Frases como «estas recomendaciones son para que tú elijas el modelo y esfuerzo disponible», si no van acompañadas de una recomendación real y específica, **NO cumplen** este contrato.
 
-Los nombres de modelos son preferencias del usuario: comprobar disponibilidad en el selector. Elegir el modelo disponible de menor consumo/cuota **por tarea aprobada**, no por tokens aislados. Calidad, intentos, riesgo y límites del plan pueden alterar la recomendación.
+**El usuario sólo toma la decisión operativa final de qué modelo y plataforma seleccionar**, según su cuota real y disponibilidad. No debe tener que analizar por su cuenta cuál conviene, ni responder preguntas sobre dónde se ejecutará. Una alternativa nunca sustituye a la recomendación principal.
+
+**NUNCA insertar nombres de modelos, proveedores, IDE, plataforma, esfuerzo de pensamiento ni instrucciones para cambiar de modelo dentro del prompt copiable de ejecución o del prompt de retorno.** La tarjeta de recomendación es un bloque separado para el usuario; el ejecutor recibe únicamente tareas, contexto y criterios técnicos.
+
+Los nombres de modelos son preferencias del usuario: comprobar disponibilidad real en el selector cuando sea posible. Recomendar el modelo de **mejor rendimiento esperado por lote aprobado**, con la **menor cuota/costo razonable sin degradar calidad**, no el mínimo de tokens por sí solo. Considerar complejidad, riesgos, probabilidad de reintentos y si el beneficio de un modelo superior justifica el consumo. No inventar cuota ni ahorro cuantitativo cuando no se conoce. Si no se puede comprobar disponibilidad, emitir igualmente la mejor recomendación técnica y una alternativa; anotar «disponibilidad por verificar» únicamente en la tarjeta externa.
+
+## Contrato obligatorio de salida por lote (para el usuario; fuera del prompt)
+
+Cada lote listo para ejecutar debe presentar esta estructura con **valores rellenados, no placeholders**:
+
+```text
+LOTE: [id real] — [resultado concreto]
+MODELO RECOMENDADO: [nombre exacto] — [Low / Medium / High / esfuerzo real]
+ALTERNATIVA: [nombre exacto] — [nivel/esfuerzo]
+POR QUÉ ÉSTE: [1–2 frases sobre probabilidad de completar correctamente, necesidad de razonamiento y cuota por lote aprobado]
+CUÁNDO USAR LA ALTERNATIVA: [cuota agotada, disponibilidad o cambio de complejidad]
+CONFIANZA: [alta / media / baja, según evidencia]
+```
+
+- **Prohibido** presentar sólo un catálogo, una comparación o la frase «tú eliges» sin seleccionar primero **una** opción recomendada y su nivel. Debe quedar claro qué conviene usar **ahora** para ese trabajo.
+- Para un lote de varias tareas, elegir un modelo que cubra correctamente el **conjunto**; si se mezclan tareas con dificultades incompatibles, **separar lotes** en vez de forzar un modelo caro para todo.
+- El nivel de pensamiento importa: sugerir el **menor nivel suficiente** (Low, Medium, High o el nivel que realmente ofrezca el selector); no poner High automáticamente. Si el nivel no está confirmado, marcarlo como «nivel a comprobar en selector» en la tarjeta, jamás inventar un nivel.
+- **Ejecución y auditoría pueden requerir recomendaciones distintas**; cuando el lote requiera auditor independiente, incluir una segunda recomendación concreta para la revisión con nivel y alternativa. Esta recomendación tampoco entra al prompt de retorno.
+- La elección manual del usuario nunca elimina la obligación de razonar y recomendar por parte del orquestador.
 
 ## Matriz de trabajo y alternativas
 
@@ -96,7 +119,7 @@ Para enrutar, considerar la disponibilidad real y medir **tareas aprobadas por c
 
 ## Límites
 
-- Primero definir problema, dependencias y criterios de aceptación. Después recomendar modelo con motivo breve y alternativa, **fuera del prompt copiable**.
+- Primero definir problema, dependencias y criterios de aceptación. Después recomendar **un modelo y un nivel de pensamiento específicos** con alternativa y motivo breve, **fuera del prompt copiable**. **No entregar lotes sin recomendación concreta.**
 - No agrupar tareas sólo por modelo ni por número. Los lotes necesitan dependencias resueltas, cambios compatibles y aceptación verificable.
 - Si dos intentos no aportan evidencia nueva, detener/elevar la tarea; no continuar gastando cuota reiterando el mismo enfoque.
 - Si el modelo preferido está agotado, el usuario decide el destino; no interrogar al agente ejecutor sobre plataforma o modelo.
