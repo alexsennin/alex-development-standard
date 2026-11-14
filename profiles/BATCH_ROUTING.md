@@ -22,6 +22,21 @@ Permitir que un orquestador revise el backlog, agrupe tareas compatibles en lote
 - Sí incluir repositorio, tarea/IDs, objetivos, contexto/contratos, dependencias, autorización, límites, pruebas y entrega.
 - Mantener la decisión **fuera** del texto copiable, incluso para el prompt de retorno.
 
+## Selección del constructor o revisor (sólo tarjeta privada del usuario)
+
+Consultar el catálogo de siete modelos de [MODEL_PROFILE.md](MODEL_PROFILE.md). Orientación resumida:
+
+| Tipo de trabajo | Modelo prioritario | Alternativa |
+| --- | --- | --- |
+| Clasificar, documentar, cambiar algo mecánico y aislado | GPT-6 Luna | Gemini 3.8 Flash |
+| CRUD, UI, validaciones y pruebas corrientes | Gemini 3.8 Flash | GPT-6.1 Terra |
+| Construcción entre varios módulos, depuración compleja ya delimitada | Gemini 4 Hydrogen | GPT-6.1 Terra / Gemini 4 Argon si reaparece incertidumbre |
+| Arquitectura, contratos entre servicios, análisis de riesgos | GPT-6.1 Sol | Gemini 4 Argon |
+| Auditoría de fórmulas financieras, seguridad, migraciones o datos | GPT-6.1 Sol independiente del constructor | Gemini 4 Argon independiente |
+| Problema extraordinario no resuelto tras análisis EXPERT | GPT-6 Astra excepcional | Gemini 4 Argon |
+
+Esta tabla **no es parte del prompt**. Valorar cuota restante, contexto disponible, criticidad y rendimiento aprobado histórico; no gastar recursos FRONTIER en cambios simples. Al recomendar, ofrecer alternativa y una sola razón clara. Ante empate práctico, dejar que el usuario seleccione el entorno disponible.
+
 ## Algoritmo de preparación de lotes
 
 1. Leer `AGENTS.md`, `PRODUCT_STRATEGY.md` si existe, `project-methodology/TODO.md` y estado vigente. No duplicar tareas existentes.
