@@ -85,8 +85,8 @@ siguientes pasos. No consideres aprobada una tarea que requiera auditoría
 independiente sólo por haberla implementado.
 
 Termina con un bloque titulado «PROMPT DE AUDITORÍA» listo para copiar.
-Este bloque debe ser autosuficiente y neutral: no debe mencionar modelos,
-proveedores, aplicaciones de IA ni plataformas de ejecución.
+Este bloque debe ser autosuficiente y contener solo la información necesaria
+para la revisión técnica y el seguimiento del lote.
 ```
 
 ## Plantilla B — prompt de retorno del constructor para revisión
