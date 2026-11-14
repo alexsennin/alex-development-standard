@@ -15,13 +15,30 @@ Los nombres de modelos son preferencias del usuario: comprobar disponibilidad en
 
 | Trabajo | Recomendación principal | Alternativas según disponibilidad/cuota | Regla |
 | --- | --- | --- | --- |
-| Arquitectura, contratos de datos, alcance, clasificación EXPERT | GPT-6.1 Sol High | Gemini 4 Argon; GPT-6.1 Terra High para análisis acotado | EXPERT antes de editar si CORE detecta datos, pagos, auth, permisos, migraciones o Producción. |
-| Auditoría independiente de lógica financiera, seguridad o cambios delicados | GPT-6.1 Sol High | Otra instancia con capacidad EXPERT y contexto independiente | Revisar evidencia directa y diff; no confiar en el relato del constructor. |
-| Construcción corriente: UI, formularios, CRUD, funciones claras, pruebas | Gemini 3.8 Flash High | GPT-6.1 Terra High; GPT-6 Luna para porciones mecánicas acotadas | Mantener Flash cuando la cuota disponible permita más tareas aprobadas. |
-| Integración entre módulos y depuración compleja con especificación clara | Gemini Hydrogen High (si está disponible) | GPT-6.1 Terra High; Gemini 3.8 Flash High si hay criterios suficientes; GPT-6.1 Sol para nuevo análisis EXPERT | Hydrogen es preferencia operativa a medir, no ganador universal ni permiso para omitir auditoría. |
-| Correcciones focalizadas, cambios visuales concretos, pruebas en varios archivos relacionados | GPT-6.1 Terra High | Gemini 3.8 Flash High; GPT-6.1 Sol si es necesaria nueva arquitectura | Terra como alternativa entre el costo de Luna y la profundidad de Sol. |
-| Tareas de alta frecuencia y bajo riesgo: documentación, triage, extracción, ajustes mecánicos | GPT-6 Luna Low/Medium | Gemini 3.8 Flash; GPT-6.1 Terra | No asignarle por defecto una integración autónoma compleja ni operaciones críticas. |
-| Problema extraordinariamente ambiguo tras análisis EXPERT y nueva evidencia | Capacidad FRONTIER disponible | GPT-6.1 Sol High/Max u otra opción suficiente | Escalamiento excepcional, no por costumbre. |
+| Arquitectura, contratos de datos, alcance, clasificación EXPERT | GPT-6.1 Sol High | Gemini 4 Argon High; GPT-6.1 Terra High para análisis acotado | EXPERT antes de editar si CORE detecta datos, pagos, auth, permisos, migraciones o Producción. |
+| Auditoría independiente de lógica financiera, seguridad o cambios delicados | GPT-6.1 Sol High | Gemini 4 Argon High en contexto independiente; GPT-6 Astra excepcionalmente | Revisar evidencia directa y diff; no confiar en el relato del constructor. |
+| Construcción corriente: UI, formularios, CRUD, funciones claras, pruebas | Gemini 3.8 Flash High | GPT-6.1 Terra High; GPT-6 Luna para porciones mecánicas acotadas | Preferir Flash cuando su cuota permita mayor rendimiento por tarea aprobada. |
+| Integración entre módulos y depuración compleja con especificación clara | Gemini 4 Hydrogen High (si está disponible) | GPT-6.1 Terra High; Gemini 4 Argon High si continúa incertidumbre | Hydrogen es preferencia operativa a medir, no ganador universal ni permiso para omitir auditoría. |
+| Correcciones focalizadas, cambios visuales concretos, pruebas en varios archivos relacionados | GPT-6.1 Terra High | Gemini 3.8 Flash High; GPT-6.1 Sol High si exige nueva arquitectura | Terra es alternativa intermedia para sesiones de construcción acotadas. |
+| Tareas de alta frecuencia y bajo riesgo: documentación, triage, extracción, ajustes mecánicos | GPT-6 Luna Low/Medium | Gemini 3.8 Flash; GPT-6.1 Terra | No asignarle por defecto integraciones complejas ni operaciones críticas. |
+| Diagnóstico de gran alcance, arquitectura transversal difícil o revisión experta alternativa | Gemini 4 Argon High | GPT-6.1 Sol High; GPT-6 Astra sólo si el bloqueo lo justifica | Reserva Argon para tareas donde el análisis experto reduzca reintentos o riesgos; comprobar cuota real. |
+| Problema excepcionalmente ambiguo o no resuelto tras EXPERT con nueva evidencia | GPT-6 Astra (si disponible y justificado) | Gemini 4 Argon High; GPT-6.1 Sol High | FRONTIER es excepcional: registrar hipótesis, evidencia e intentos; evitar consumo excesivo de Plus. |
+
+## Catálogo completo para decisión del usuario
+
+El perfil incluye **siete modelos**. El catálogo no asigna modelos automáticamente y no debe filtrarse a los prompts copiables.
+
+| Modelo | Capacidad ARC de uso típico | Función preferida | Condición de uso |
+| --- | --- | --- | --- |
+| **GPT-6 Luna** (Low/Medium) | ROUTER / FOCUSED | Clasificación, documentación y cambios mecánicos de bajo riesgo | Priorizar volumen de tareas simples; escalar si se vuelve compleja. |
+| **GPT-6.1 Terra** (High) | FOCUSED / ADVANCED | Ejecución técnica intermedia, depuración concreta, pruebas y refactor focal | Alternativa eficiente cuando Flash no está disponible o conviene usar Codex. |
+| **GPT-6.1 Sol** (High) | EXPERT | Orquestador principal, arquitectura, definición de contratos y auditoría independiente | Reservar para decisiones/revisión difíciles, no construcción mecánica de cada tarea. |
+| **GPT-6 Astra** | FRONTIER | Desbloqueo excepcional y análisis/auditoría de máxima dificultad | Cuota Plus más restringida; no usar de forma rutinaria. |
+| **Gemini 3.8 Flash** (High) | FOCUSED / ADVANCED | Constructor habitual, UI, CRUD, pruebas y ciclos prolongados de ejecución | Preferido si el usuario dispone de suficiente cuota y la tarea es clara. |
+| **Gemini 4 Hydrogen** (High) | ADVANCED | Construcción compleja, integraciones y depuración con varias piezas | Medir eficiencia real por lote aprobado frente a Flash/Terra. |
+| **Gemini 4 Argon** (High, según selector) | EXPERT / FRONTIER condicionado | Arquitectura exigente, incertidumbre compleja y revisión de alto riesgo | Escalar solo si aporta valor y existe cuota; no confundir con Hydrogen. |
+
+No son rangos absolutos: una actividad de riesgo elevado obliga a cumplir los controles de ARC aunque la implementación use un ejecutor más económico.
 
 **Separación de fases:** una tarea puede tener *análisis EXPERT*, *ejecución FOCUSED/ADVANCED* y *auditoría EXPERT*. Es un plan interno de enrutamiento, no una instrucción para que el constructor negocie qué modelo ejecutará la tarea.
 
@@ -41,6 +58,30 @@ Fuentes:
 - https://developers.openai.com/api/docs/guides/model-selection
 - https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex
 
+### Referencias adicionales: Argon y Astra (evaluaciones de fabricantes)
+
+La ficha de Gemini 4 Argon publicada por Google DeepMind (octubre de 2026) incluye esta comparación **dentro del mismo marco de evaluación**:
+
+| Benchmark | Gemini 4 Argon | GPT-6 Astra |
+| --- | ---: | ---: |
+| DeepSWE v1.1 | 77.9% | 74.1% |
+| FrontierSWE v2 | 55.0% | 65.5% |
+| Terminal-Bench 4.0 | 57.4% | 58.2% |
+| Vibe Code Bench | 91.9% | 89.6% |
+
+Fuente primaria: https://deepmind.google/models/model-cards/gemini-4-argon/  
+Fuente de Astra: https://openai.com/index/gpt-6-astra/
+
+**Advertencia:** las tablas de fabricante son evidencia orientativa, no prueba de que un modelo sea mejor en todos los proyectos. No mezclar resultados de diferentes versiones de benchmark, niveles de esfuerzo o plataformas.
+
+### Cuotas y rendimiento real por tarea
+
+OpenAI documenta para Plus una referencia aproximada por ventana de cinco horas de **5–45 mensajes locales con Astra**, **15–160 con GPT-6.1 Sol** y **350–3,000 con GPT-6 Luna**, además de posibles límites semanales. No usar estas cifras para pronosticar con precisión el número de tareas completadas; pueden variar según carga y plan. No hay equivalencia autorizada aquí para Terra, Hydrogen, Flash o Argon.
+
+Fuente: https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex
+
+Para enrutar, considerar la disponibilidad real y medir **tareas aprobadas por cuota consumida**, reintentos, duración y errores. Un modelo que utiliza más tokens por intento puede ser más eficiente si termina el lote sin retrabajo.
+
 **No inferir del costo API una cuota real del plan.** La medida de eficiencia operativa es número de tareas o lotes **aprobados**, incluyendo reintentos, tiempo, consumo observado del producto y defectos. Cifras de distintos benchmarks/esfuerzos no son equivalentes. Los cupos se verifican en cada producto.
 
 ## Perfil de capacidades ARC (abstracto y estable)
@@ -50,8 +91,8 @@ Fuentes:
 | ROUTER | GPT-6 Luna Low; Gemini 3.8 Flash |
 | FOCUSED | GPT-6 Luna para mecánica acotada; GPT-6.1 Terra o Gemini Flash para cambios de código |
 | ADVANCED | GPT-6.1 Terra High, Gemini Flash High, o Hydrogen High si disponible y medido |
-| EXPERT | GPT-6.1 Sol High; Gemini 4 Argon como alternativa |
-| FRONTIER | Capacidad superior disponible, sólo si evidencia lo exige |
+| EXPERT | GPT-6.1 Sol High; Gemini 4 Argon High como alternativa avanzada |
+| FRONTIER | GPT-6 Astra o Gemini 4 Argon si el caso y la cuota justifican escalar |
 
 ## Límites
 
