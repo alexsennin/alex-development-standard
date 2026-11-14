@@ -5,14 +5,15 @@
 **Modelos vigentes:** [MODEL_PROFILE](MODEL_PROFILE.md).
 
 ## Objetivo
-Permitir que un orquestador revise el backlog, agrupe tareas compatibles en lotes ejecutables, recomiende **al usuario** una capacidad/modelo y entregue un **prompt neutral** que pueda pegarse en cualquier agente. Tras la ejecución, el constructor devuelve un **prompt neutral de auditoría**. No requiere AXIOM, nuevo chat, nueva aplicación ni nuevos archivos por lote.
+Permitir que un orquestador revise el backlog, agrupe tareas compatibles en lotes ejecutables, **seleccione y recomiende explícitamente UN modelo y UN nivel de pensamiento por lote al usuario**, con alternativa argumentada según capacidad, calidad y ahorro esperado por tarea aprobada, y entregue un **prompt neutral** que pueda pegarse en cualquier agente. Tras la ejecución, el constructor devuelve un **prompt neutral de auditoría**. No requiere AXIOM, nuevo chat, nueva aplicación ni nuevos archivos por lote.
 
 ## Separación estricta: tarjeta de enrutamiento vs. prompt copiable
 
 **Tarjeta para el usuario — nunca copiar al ejecutor:**
 - ID del lote, objetivo y tareas.
-- Modelo recomendado, esfuerzo y alternativa según disponibilidad.
-- Motivo de la elección y cuota/consumo estimado con la incertidumbre correspondiente.
+- **Recomendación obligatoria y explícita:** modelo principal concreto + nivel de pensamiento recomendado; alternativa concreta + su nivel.
+- **Justificación por lote:** por qué ese modelo puede cubrir correctamente todas las tareas con el mejor ahorro razonable; cuándo usar alternativa; confianza y supuestos de cuota, sin cifras inventadas.
+- Si se necesita auditoría independiente, **recomendación aparte para el auditor** con nivel y alternativa, también fuera del prompt.
 - Estado, dependencias, riesgos y lugar de ejecución elegidos por el usuario, si aporta valor a su propio tablero.
 
 **Prompt copiable — completamente neutral:**
@@ -35,7 +36,7 @@ Consultar el catálogo de siete modelos de [MODEL_PROFILE.md](MODEL_PROFILE.md).
 | Auditoría de fórmulas financieras, seguridad, migraciones o datos | GPT-6.1 Sol independiente del constructor | Gemini 4 Argon independiente |
 | Problema extraordinario no resuelto tras análisis EXPERT | GPT-6 Astra excepcional | Gemini 4 Argon |
 
-Esta tabla **no es parte del prompt**. Valorar cuota restante, contexto disponible, criticidad y rendimiento aprobado histórico; no gastar recursos FRONTIER en cambios simples. Al recomendar, ofrecer alternativa y una sola razón clara. Ante empate práctico, dejar que el usuario seleccione el entorno disponible.
+Esta tabla **no es parte del prompt**. Valorar cuota restante, contexto disponible, criticidad y rendimiento aprobado histórico; no gastar recursos FRONTIER en cambios simples. **Para cada lote elegir y decir de forma inequívoca «Modelo recomendado: X — Pensamiento: Y», además de la alternativa concreta con su nivel**. Indicar en una o dos frases por qué maximiza el trabajo bien aprobado por cuota esperada. No vale responder sólo «elige el modelo y esfuerzo disponible», presentar toda la tabla sin elegir, ni delegar al usuario el juicio técnico. El usuario sólo elige manualmente si acepta esa recomendación y dónde ejecutarla.
 
 ## Algoritmo de preparación de lotes
 
@@ -43,13 +44,21 @@ Esta tabla **no es parte del prompt**. Valorar cuota restante, contexto disponib
 2. Clasificar cada tarea por modo, nivel 1–4 y capacidad ARC. Verificar dependencias, autorización, compatibilidad de archivos/contratos y pruebas previstas.
 3. Ordenar por resultados comerciales/operativos aprobados y dependencias, no por cantidad. Separar análisis EXPERT si falta contrato o fórmula clara.
 4. Agrupar inicialmente **3–6 tareas**, pudiendo llegar a 10 sólo cuando estén bien acotadas e independientes. Mantener un objetivo verificable por lote y considerar si los cambios compartirán esquema/archivos.
-5. Registrar ID de lote, tareas, estado y siguiente paso en los documentos *ya existentes*, sólo cuando realmente cambien. Proponer modelo/alternativa en **tarjeta externa para el usuario**, nunca en el prompt copiable.
+5. Registrar ID de lote, tareas, estado y siguiente paso en los documentos *ya existentes*, sólo cuando realmente cambien. **Emitir obligatoriamente una recomendación principal y una alternativa con niveles concretos de pensamiento por cada lote**, fuera del prompt copiable; cuando el nivel exacto no esté verificado en el selector, declarar esa incertidumbre en la tarjeta. Si la dificultad de un lote exigiría gastar capacidad superior sólo para algunas tareas, dividirlo.
 6. El usuario autoriza uno o varios lotes, copia los prompts y decide manualmente dónde y con qué modelo ejecutarlos.
 7. El ejecutor completa las tareas autorizadas sin requerir aprobación rutinaria entre microtareas, prueba y corrige dentro del alcance. Si una tarea se bloquea, documenta la causa y continúa sólo con las independientes y seguras.
 8. Ejecutar CHECK proporcional, producir resultados y prompt de auditoría. El revisor inspecciona directamente diff/commits y evidencias, no toma el resumen del constructor como prueba. Cierra tareas sólo cuando se cumple aceptación y autorización.
 9. Si hay fallas, retornar correcciones acotadas; si hay hechos nuevos o dos intentos sin progreso, replanificar o elevar la tarea afectada. No gastar cuota repetidamente.
 
 **Paradas obligatorias:** cambios materiales de alcance o contrato, migraciones no previstas, permisos/secretos/auth, dinero/datos productivos, operación destructiva, despliegue en Producción o falta de seguridad para revertir. Un lote no concede autorización para RELEASE ni para tareas adicionales.
+
+## Requisito de aceptación de una respuesta del orquestador
+
+La respuesta **NO está completa** hasta que **todos los lotes propuestos** tengan una recomendación concreta y su nivel de pensamiento. Una lista de candidatos, una tabla genérica de modelos o una frase como «estas recomendaciones son para que tú elijas el modelo y esfuerzo disponible» no cumple la petición.
+
+El orquestador **hace el análisis técnico y recomienda**. El usuario solo toma la decisión de disponibilidad/ejecución. Incluir un único modelo principal por lote (con alternativa) fuera del prompt; si hay auditoría, recomendar por separado un modelo concreto para la auditoría. No preguntar al constructor por plataforma, cuota o modelo.
+
+Si no hay evidencia para cuantificar ahorro, justificarlo cualitativamente y proponer medirlo; no inventar límites de cuota, precios o porcentajes de rendimiento.
 
 ## Plantilla A — salida del orquestador
 
@@ -59,9 +68,12 @@ Esta tabla **no es parte del prompt**. Valorar cuota restante, contexto disponib
 LOTE: [BATCH_ID]
 TAREAS: [IDs]
 OBJETIVO: [resultado verificable]
-MODELO RECOMENDADO: [modelo / esfuerzo]
-ALTERNATIVA: [modelo / esfuerzo]
-MOTIVO: [capacidad suficiente, riesgo, disponibilidad/cuota, en una frase]
+MODELO RECOMENDADO: [nombre específico de UN modelo]
+NIVEL DE PENSAMIENTO: [Low / Medium / High / nivel real del selector]
+ALTERNATIVA: [nombre específico de UN modelo] — [nivel de pensamiento]
+POR QUÉ ES LA MEJOR RELACIÓN CALIDAD/CUOTA: [1–2 frases: complejidad, riesgo, reintentos y rendimiento por lote aprobado]
+CUÁNDO USAR ALTERNATIVA: [motivo concreto]
+RECOMENDACIÓN DE AUDITORÍA SI APLICA: [modelo + pensamiento] — [alternativa + pensamiento]
 BLOQUEOS/DEPENDENCIAS: [...]
 ESTADO: Listo / Requiere contrato / Bloqueado
 ```
